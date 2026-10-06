@@ -552,6 +552,14 @@ footer .links {
 
 footer .links a:hover { color: var(--ink); }
 
+footer .social-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+footer .social-links a:hover { color: var(--ink); }
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1150px) {
