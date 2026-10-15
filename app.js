@@ -58,13 +58,18 @@
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       var email = form.elements.email.value.trim();
-      var name = form.elements.name.value.trim();
-      var discipline = form.elements.discipline.value;
+      var first = form.elements.first.value.trim();
+      var last = form.elements.last.value.trim();
       var confirmed = form.elements.confirm.checked;
 
       // Honeypot: real people never see this field. Pretend it worked and send nothing.
       if (form.elements.website.value) { showDone(); return; }
 
+      if (!first) {
+        say('Enter your first name.', true);
+        form.elements.first.focus();
+        return;
+      }
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
         say('Enter a valid email address.', true);
         form.elements.email.focus();
@@ -87,8 +92,8 @@
         },
         body: JSON.stringify({
           p_email: email,
-          p_name: name,
-          p_discipline: discipline,
+          p_first_name: first,
+          p_last_name: last,
           p_confirmed: confirmed
         })
       }).then(function (res) {
@@ -112,7 +117,7 @@
   if (join && form) {
     join.addEventListener('click', function () {
       setTimeout(function () {
-        if (!form.hidden) form.elements.email.focus({ preventScroll: true });
+        if (!form.hidden) form.elements.first.focus({ preventScroll: true });
       }, 400);
     });
   }

@@ -31,7 +31,7 @@ CNAME           tells GitHub Pages this repo serves allalphas.com
 
 ## Open items before this goes live (see project roadmap)
 
-- [ ] Beta sign-up form (hero): run `supabase/migrations/0028_beta_signups.sql` in the Supabase SQL Editor first, and update the Privacy Policy to cover the sign-up list (email, optional name, USPSA/IDPA) before this goes live
+- [ ] Beta sign-up form (hero): run `supabase/migrations/0028_beta_signups.sql` (done) and `0029_beta_signup_names.sql` in the Supabase SQL Editor, and update the Privacy Policy to cover the sign-up list (first name, optional last name, email) before this goes live
 - [ ] Once Apple approves the external TestFlight build, set `TESTFLIGHT_URL` in `app.js` (shows a TestFlight button above the form)
 - [ ] Real App Store badge (Apple's official asset) and URL once the app is listed — replace the beta block in `index.html`
 - [x] Real app screenshots: `assets/screenshot-home.png` and `screenshot-analytics.png` (from `design/app-store/` in the app repo; retake there, resize to 640 px wide, bump `styles.css?v=`)
