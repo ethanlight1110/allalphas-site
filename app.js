@@ -19,12 +19,101 @@
     });
   }
 
-  // TODO: once the App Store listing is live, set this to the real
-  // https://apps.apple.com/app/id<...> URL and remove this notice.
-  var APP_STORE_URL = null;
-  if (APP_STORE_URL) {
-    document.querySelectorAll('#download-link, #store-badge-link').forEach(function (el) {
-      el.setAttribute('href', APP_STORE_URL);
+  // ---- Beta sign-up ----------------------------------------------------
+  // Both values are public by design (the app ships the same ones). The table behind the form
+  // can't be read or written with this key; the only way in is the join_beta() function
+  // (supabase/migrations/0028_beta_signups.sql in ethanlight1110/all-alphas).
+  var SUPABASE_URL = 'https://angejsoovsozmifusyok.supabase.co';
+  var SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_cPbH63FUT-T_7LQ0evo6zg_KDX5l-oz';
+
+  // TODO: once Apple approves the external TestFlight build, paste the public link here
+  // (https://testflight.apple.com/join/...). The page then shows a TestFlight button above
+  // the sign-up form, which stays as the waitlist.
+  var TESTFLIGHT_URL = null;
+  // (When the App Store listing is live, replace the beta block in index.html with the App Store
+  // badge and its https://apps.apple.com/app/id<...> link.)
+
+  var tf = document.getElementById('testflight-link');
+  if (tf && TESTFLIGHT_URL) {
+    tf.setAttribute('href', TESTFLIGHT_URL);
+    tf.hidden = false;
+  }
+
+  var form = document.getElementById('beta-form');
+  var status = document.getElementById('beta-status');
+  var done = document.getElementById('beta-done');
+  var submit = document.getElementById('beta-submit');
+
+  function say(text, isError) {
+    status.textContent = text || '';
+    status.classList.toggle('error', !!isError);
+  }
+
+  function showDone() {
+    form.hidden = true;
+    done.hidden = false;
+  }
+
+  if (form) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var email = form.elements.email.value.trim();
+      var name = form.elements.name.value.trim();
+      var discipline = form.elements.discipline.value;
+      var confirmed = form.elements.confirm.checked;
+
+      // Honeypot: real people never see this field. Pretend it worked and send nothing.
+      if (form.elements.website.value) { showDone(); return; }
+
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        say('Enter a valid email address.', true);
+        form.elements.email.focus();
+        return;
+      }
+      if (!confirmed) {
+        say('Please confirm you are 18 or older and have an iPhone.', true);
+        return;
+      }
+
+      say('');
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+
+      fetch(SUPABASE_URL + '/rest/v1/rpc/join_beta', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_PUBLISHABLE_KEY
+        },
+        body: JSON.stringify({
+          p_email: email,
+          p_name: name,
+          p_discipline: discipline,
+          p_confirmed: confirmed
+        })
+      }).then(function (res) {
+        if (res.ok) { showDone(); return; }
+        return res.json().catch(function () { return {}; }).then(function (body) {
+          // The function's own messages (code P0001) are written for people; anything else is generic.
+          var friendly = body && body.code === 'P0001' && body.message;
+          say(friendly || 'Something went wrong. Please try again, or email support@allalphas.com.', true);
+        });
+      }).catch(function () {
+        say('Could not reach the server. Check your connection and try again.', true);
+      }).then(function () {
+        submit.disabled = false;
+        submit.textContent = 'Join the beta';
+      });
+    });
+  }
+
+  // The nav button jumps to the form; put the cursor in the email field once it gets there.
+  var join = document.getElementById('join-link');
+  if (join && form) {
+    join.addEventListener('click', function () {
+      setTimeout(function () {
+        if (!form.hidden) form.elements.email.focus({ preventScroll: true });
+      }, 400);
     });
   }
 })();

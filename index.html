@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -25,7 +25,7 @@
     <a class="nav-link" href="#privacy">Privacy</a>
     <a class="nav-link" href="#terms">Terms</a>
     <a class="nav-link" href="#community">Community</a>
-    <a class="pill" href="#" id="download-link">Download</a>
+    <a class="pill" href="#beta" id="join-link">Join the beta</a>
   </div>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
 </nav>
@@ -37,17 +37,50 @@
     <span class="eyebrow">THE TRAINING LOG FOR COMPETITIVE SHOOTERS</span>
     <h1>TRAIN.<br>LOG.<br>GET FASTER.</h1>
     <p>All Alphas is a training aid for practical shooters. Run drills on a par timer, score hit factor, track every gun and round, and plan range days, all from your iPhone.</p>
-    <div class="store-row">
-      <a class="store-badge" href="#" id="store-badge-link" aria-label="Download on the App Store">
-        <span class="small">Download on the</span>
-        <span class="big">App Store</span>
+    <div class="beta" id="beta">
+      <form class="beta-form" id="beta-form" novalidate>
+        <span class="beta-title">JOIN THE PUBLIC BETA</span>
+        <div class="beta-row">
+          <label class="visually-hidden" for="beta-email">Email address</label>
+          <input class="beta-input" id="beta-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required>
+          <button class="pill beta-submit" type="submit" id="beta-submit">Join the beta</button>
+        </div>
+        <div class="beta-row beta-row-2">
+          <label class="visually-hidden" for="beta-name">Name (optional)</label>
+          <input class="beta-input" id="beta-name" name="name" type="text" autocomplete="name" placeholder="Name (optional)" maxlength="60">
+          <label class="visually-hidden" for="beta-discipline">What do you shoot?</label>
+          <select class="beta-input" id="beta-discipline" name="discipline">
+            <option value="uspsa">USPSA</option>
+            <option value="idpa">IDPA</option>
+            <option value="both">Both</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="beta-trap" aria-hidden="true">
+          <label for="beta-website">Leave this field empty</label>
+          <input id="beta-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <label class="beta-check">
+          <input type="checkbox" id="beta-confirm" name="confirm">
+          <span>I'm 18 or older and I have an iPhone.</span>
+        </label>
+        <p class="beta-status" id="beta-status" role="status" aria-live="polite"></p>
+        <p class="beta-note">We only use your email to send your beta invite and a few updates about the beta. See the <a href="#privacy">Privacy Policy</a>.</p>
+      </form>
+      <div class="beta-done" id="beta-done" hidden>
+        <span class="beta-title">YOU'RE ON THE LIST.</span>
+        <p>We'll email you your TestFlight invite as soon as the beta opens.</p>
+      </div>
+      <a class="store-badge" id="testflight-link" href="#" hidden>
+        <span class="small">Join the beta on</span>
+        <span class="big">TestFlight</span>
       </a>
       <span class="store-caption">iPhone · Android coming soon</span>
     </div>
   </div>
   <div class="hero-art" aria-hidden="true">
-    <div class="phone behind shot-train">
-      <img src="assets/screenshot-train.png" alt="" onerror="this.closest('.phone').style.display='none'">
+    <div class="phone behind shot-analytics">
+      <img src="assets/screenshot-analytics.png" alt="" onerror="this.closest('.phone').style.display='none'">
     </div>
     <div class="phone front shot-home">
       <img src="assets/screenshot-home.png" alt="" onerror="this.closest('.phone').style.display='none'">

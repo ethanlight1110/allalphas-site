@@ -31,8 +31,10 @@ CNAME           tells GitHub Pages this repo serves allalphas.com
 
 ## Open items before this goes live (see project roadmap)
 
-- [ ] Real App Store badge (Apple's official asset) and URL once the app is listed — set `APP_STORE_URL` in `app.js`
-- [ ] Real app screenshots in `assets/` (`screenshot-home.png`, `screenshot-train.png`) to replace the hero art placeholders
+- [ ] Beta sign-up form (hero): run `supabase/migrations/0028_beta_signups.sql` in the Supabase SQL Editor first, and update the Privacy Policy to cover the sign-up list (email, optional name, USPSA/IDPA) before this goes live
+- [ ] Once Apple approves the external TestFlight build, set `TESTFLIGHT_URL` in `app.js` (shows a TestFlight button above the form)
+- [ ] Real App Store badge (Apple's official asset) and URL once the app is listed — replace the beta block in `index.html`
+- [x] Real app screenshots: `assets/screenshot-home.png` and `screenshot-analytics.png` (from `design/app-store/` in the app repo; retake there, resize to 640 px wide, bump `styles.css?v=`)
 - [ ] Legal review of the Privacy Policy, Terms and Safety Disclaimer copy
 - [ ] Confirm `support@allalphas.com` and `privacy@allalphas.com` mailboxes exist and are monitored
 - [ ] Confirm in-app path for account deletion exists (Settings → Account → Delete account)
