@@ -9,8 +9,8 @@ dark theme matching the app (`src/theme/tokens.ts` in
 `ethanlight1110/all-alphas`). The home page is one long page: landing (hero, Download now button, features), then
 Faith, Safety and Support as scroll sections (`/#faith`, `/#safety`, `/#support`).
 Privacy, Terms and Community are their own pages. There is no build step,
-so the nav and footer are repeated in each page's HTML; change them in all 4
-(`index.html`, `privacy/`, `terms/`, `community/`).
+so the nav and footer are repeated in each page's HTML; change them in all 5
+(`index.html`, `features/`, `privacy/`, `terms/`, `community/`).
 
 ## App Store Connect values
 
@@ -22,6 +22,7 @@ so the nav and footer are repeated in each page's HTML; change them in all 4
 
 ```
 index.html      home: hero + Download now, features, Faith, Safety, Support
+features/       Features page (cards + the two app screenshots)
 support/        redirects to /#support (nicer URL for App Store Connect)
 safety/         redirects to /#safety
 faith/          redirects to /#faith

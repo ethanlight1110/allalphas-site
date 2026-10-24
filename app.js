@@ -124,6 +124,10 @@
       // [selector, stagger in ms between siblings in the same group]
       var groups = [
         ['.hero-copy > *', 90],
+        ['.feat-hero-copy > *', 90],
+        ['.feat-shots .phone', 160],
+        ['.feat-card', 70],
+        ['.feat-cta > *', 90],
         ['.faith > :not(.faith-body)', 110],
         ['.faith-body > *', 110],
         ['.hero-art .phone', 160],

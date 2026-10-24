@@ -934,3 +934,133 @@ footer .social-links a:hover { color: var(--ink); }
   padding: 0 34px;
   font-size: 17px;
 }
+
+/* ---------- Features page ---------- */
+
+.feat-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding: 72px var(--side-pad) 0;
+}
+
+.feat-hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+}
+
+.feat-hero h1 {
+  margin: 0;
+  font: 600 clamp(52px, 8vw, 96px)/.9 'Barlow Condensed', sans-serif;
+}
+
+.feat-hero p {
+  margin: 0;
+  max-width: 440px;
+  font: 400 17px/1.55 'Geist', sans-serif;
+  color: var(--mute);
+}
+
+.feat-shots {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px;
+}
+
+.feat-shots .phone.second { margin-top: 70px; }
+
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding: 96px var(--side-pad) 0;
+}
+
+.feat-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feat-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.feat-card h2 {
+  margin: 0;
+  font: 600 28px/1 'Barlow Condensed', sans-serif;
+}
+
+.feat-tag {
+  font: 500 11px 'Geist', sans-serif;
+  letter-spacing: 1.5px;
+  color: var(--good);
+}
+
+.feat-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feat-card li {
+  position: relative;
+  padding-left: 18px;
+  font: 400 14px/1.5 'Geist', sans-serif;
+  color: var(--mute);
+}
+
+.feat-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--good);
+}
+
+.feat-cta {
+  padding: 110px var(--side-pad) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+.feat-cta h2 {
+  margin: 0;
+  font: 600 clamp(40px, 7vw, 72px)/.95 'Barlow Condensed', sans-serif;
+}
+
+@media (max-width: 1000px) {
+  .feat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .feat-hero { grid-template-columns: minmax(0, 1fr); padding-top: 48px; text-align: center; }
+  .feat-hero-copy { align-items: center; }
+  .feat-shots { margin-top: 24px; }
+  .feat-shots .phone.second { display: none; }
+}
+
+@media (max-width: 640px) {
+  .feat-grid { grid-template-columns: minmax(0, 1fr); padding-top: 64px; }
+  .feat-cta { padding-top: 72px; }
+}
