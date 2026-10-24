@@ -722,11 +722,26 @@ footer .social-links a:hover { color: var(--ink); }
 /* The back phone is intentionally dimmed. */
 .js .hero-art .behind.reveal.in { opacity: .5; }
 
-/* Phones: rise in, then drift at different speeds while the hero scrolls away. */
+/* Phones: rise in, then swipe off to the right as you scroll down (--p runs 0 → 1 over the hero).
+   The hero clips horizontally so the off-screen phones never create a sideways scrollbar. */
+.js .hero { overflow-x: clip; }
 .js .hero-art .phone.reveal { transform: translateY(48px) scale(.97); }
 .js .hero-art .phone.reveal.in { transform: none; }
-.js .hero-art .front { translate: 0 calc(var(--py, 0) * -0.05px); }
-.js .hero-art .behind { translate: 0 calc(var(--py, 0) * 0.1px); }
+.js .hero-art .phone {
+  /* translate is driven directly by scroll, so no easing on it (opacity/transform keep theirs) */
+  transition:
+    opacity .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms),
+    transform .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms);
+  will-change: translate, rotate;
+}
+.js .hero-art .front {
+  translate: calc(var(--p, 0) * 85vw) calc(var(--p, 0) * -30px);
+  rotate: calc(var(--p, 0) * 9deg);
+}
+.js .hero-art .behind {
+  translate: calc(var(--p, 0) * 115vw) calc(var(--p, 0) * -50px);
+  rotate: calc(var(--p, 0) * 12deg);
+}
 
 /* Hover lift uses `translate` so it never fights the reveal's `transform`. */
 .js .help-card:hover,

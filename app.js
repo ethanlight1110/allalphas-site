@@ -170,7 +170,12 @@
         var y = window.pageYOffset || 0;
         var max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
         if (bar) bar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, y / max)) + ')';
-        if (heroArt && y < 1400) heroArt.style.setProperty('--py', y);
+        if (heroArt) {
+          // 0 at the top of the page, 1 once the hero is mostly scrolled past.
+          var heroEl = heroArt.closest('.hero');
+          var span = Math.max(1, (heroEl ? heroEl.offsetHeight : 700) * 0.9);
+          heroArt.style.setProperty('--p', Math.min(1, y / span).toFixed(4));
+        }
         // Fast scrolls/jumps can skip an element without it ever intersecting; reveal anything
         // that is already above the viewport.
         targets.forEach(function (el) {
