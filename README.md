@@ -5,27 +5,30 @@ no build step, no framework, no tracking. Hosted free on GitHub Pages at
 `allalphas.com`.
 
 Built from the design handoff (`design_handoff_allalphas_website/`, option 3a):
-one page, dark theme matching the app (`src/theme/tokens.ts` in
-`ethanlight1110/all-alphas`), with the Privacy Policy, Terms of Service and
-Safety Disclaimer required for App Store Connect living at anchors on this
-same page.
+dark theme matching the app (`src/theme/tokens.ts` in
+`ethanlight1110/all-alphas`). Multi-page: a home page plus a page each for
+Support, Safety, Privacy, Terms, Community and Faith. There is no build step,
+so the nav and footer are repeated in each page's HTML; change them in all 7.
 
 ## App Store Connect values
 
-- Privacy Policy URL: `https://allalphas.com/#privacy` (or `/privacy`)
-- Support URL: `https://allalphas.com/#support` (or `/support`)
+- Privacy Policy URL: `https://allalphas.com/privacy/`
+- Support URL: `https://allalphas.com/support/`
+- Old one-page links (`/#privacy`, `/#support`, etc.) still work: the home page redirects them to the matching page.
 
 ## Structure
 
 ```
-index.html      the whole one-page site
+index.html      home: hero, beta sign-up, feature strip
+support/        Support page
+safety/         Safety Disclaimer page
+privacy/        Privacy Policy page
+terms/          Terms of Service page
+community/      Community Guidelines page
+faith/          Statement of Faith page
 styles.css
-app.js          mobile nav, beta form, scroll motion (reveals, hero parallax, progress bar; off for reduced-motion visitors); no analytics, no trackers
-assets/         logo.svg, app icon, favicon
-privacy/        redirects to /#privacy (nicer URL for App Store Connect)
-terms/          redirects to /#terms
-support/        redirects to /#support
-safety/         redirects to /#safety
+app.js          mobile nav, beta form, scroll motion (reveals, hero phones swiping off right, progress bar; off for reduced-motion visitors); no analytics, no trackers
+assets/         logo.svg, app icon, favicon, screenshots
 CNAME           tells GitHub Pages this repo serves allalphas.com
 ```
 

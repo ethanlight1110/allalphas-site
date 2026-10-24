@@ -2,12 +2,94 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=/#support">
-<link rel="canonical" href="https://allalphas.com/#support">
-<title>All Alphas — redirecting…</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — All Alphas</title>
+<meta name="description" content="Get help with All Alphas: restore your data, manage your subscription, delete your account, or email support.">
+<link rel="canonical" href="https://allalphas.com/support/">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=7">
+<script>
+  // Scroll animations are an enhancement: skip them for people who ask for reduced motion.
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js');
+</script>
 </head>
 <body>
-<p>Redirecting to <a href="/#support">allalphas.com/#support</a>…</p>
-<script>location.replace('/#support');</script>
+
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<nav class="nav" id="nav">
+  <a href="/" class="nav-brand" aria-label="All Alphas home">
+    <img src="/assets/logo.svg" alt="">
+    <span class="nav-wordmark">ALL ALPHAS</span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="/support/" aria-current="page">Support</a>
+    <a class="nav-link" href="/safety/">Safety</a>
+    <a class="nav-link" href="/privacy/">Privacy</a>
+    <a class="nav-link" href="/terms/">Terms</a>
+    <a class="nav-link" href="/community/">Community</a>
+    <a class="nav-link" href="/faith/">Faith</a>
+    <a class="pill" href="/#beta" id="join-link">Join the beta</a>
+  </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+</nav>
+
+<main class="page-main">
+<section class="section" id="support">
+  <div class="section-label">
+    <span class="eyebrow">SUPPORT</span>
+    <h2>GET HELP.</h2>
+  </div>
+  <div class="support-body">
+    <div class="email-card">
+      <div>
+        <span class="label">EMAIL</span>
+        <a href="mailto:support@allalphas.com">SUPPORT@ALLALPHAS.COM</a>
+      </div>
+      <a class="pill" href="mailto:support@allalphas.com">Email us</a>
+    </div>
+    <div class="help-grid">
+      <div class="help-card">
+        <span class="title">RESTORE YOUR DATA</span>
+        <span class="body">Profile → Privacy &amp; data → Restore from backup. Or sign in with All Alphas Pro and turn on Cloud sync.</span>
+      </div>
+      <div class="help-card">
+        <span class="title">MANAGE SUBSCRIPTION</span>
+        <span class="body">iPhone Settings → your name → Subscriptions → All Alphas.</span>
+      </div>
+      <div class="help-card">
+        <span class="title">DELETE YOUR ACCOUNT</span>
+        <span class="body">Profile → Account → Delete account. This removes your account and cloud data.</span>
+      </div>
+    </div>
+    <span class="support-foot">When you email, include your iOS version and the app version (shown at the bottom of Profile).</span>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="brand">
+    <img src="/assets/logo.svg" alt="">
+    <span>© 2026 VanLi Labs LLC · All Alphas · allalphas.com</span>
+  </div>
+  <div class="links">
+    <a href="/support/">Support</a>
+    <a href="/safety/">Safety</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+    <a href="/community/">Community</a>
+    <a href="/faith/">Faith</a>
+  </div>
+  <div class="social-links">
+    <a href="https://instagram.com/allalphas.app" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://x.com/allalphas.app" target="_blank" rel="noopener">X</a>
+  </div>
+</footer>
+
+<script src="/app.js?v=4"></script>
 </body>
 </html>

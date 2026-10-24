@@ -688,6 +688,95 @@ footer .social-links {
 
 footer .social-links a:hover { color: var(--ink); }
 
+/* ---------- Inner pages ---------- */
+
+.nav-links a.nav-link[aria-current="page"] { color: var(--ink); }
+
+.page-main { padding-bottom: 110px; }
+.page-main .section { padding-top: 72px; }
+.page-main .section:last-of-type { padding-bottom: 0; }
+.page-main .safety-panel { margin-top: 72px; }
+
+/* ---------- Faith ---------- */
+
+.faith {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 96px var(--side-pad) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.faith h1 {
+  margin: 0;
+  font: 600 clamp(44px, 9vw, 96px)/.95 'Barlow Condensed', sans-serif;
+  letter-spacing: 1px;
+}
+
+.faith-rule {
+  display: block;
+  width: 80px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--good);
+}
+
+.faith-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 700px;
+}
+
+.faith-body p {
+  margin: 0;
+  font: 400 clamp(18px, 2.4vw, 24px)/1.6 'Geist', sans-serif;
+}
+
+.faith-verse {
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 700px;
+}
+
+.faith-verse figcaption {
+  font: 500 14px 'Geist', sans-serif;
+  letter-spacing: 4px;
+  color: var(--good);
+}
+
+.faith-verse blockquote {
+  margin: 0;
+  font: italic 400 clamp(18px, 2.4vw, 24px)/1.6 'Geist', sans-serif;
+  color: var(--mute);
+}
+
+.faith-brand {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.faith-brand img { width: 64px; height: auto; }
+
+.faith-brand span {
+  font: 600 22px/1 'Barlow Condensed', sans-serif;
+  letter-spacing: 3px;
+}
+
+@media (max-width: 560px) {
+  .faith { padding-top: 56px; gap: 32px; }
+  .page-main .section { padding-top: 48px; }
+  .page-main .safety-panel { margin-top: 48px; }
+}
+
 /* ---------- Scroll motion ---------- */
 /* Everything here is gated on html.js, which a head script only sets when the visitor has not
    asked for reduced motion. Without it the page is fully visible and static. */

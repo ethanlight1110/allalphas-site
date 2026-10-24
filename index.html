@@ -5,12 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>All Alphas — The training log for competitive shooters</title>
 <meta name="description" content="All Alphas is a training aid for practical shooters. Run drills on a par timer, score hit factor, track every gun and round, and plan range days, all from your iPhone.">
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="canonical" href="https://allalphas.com/">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="/styles.css?v=7">
+<script>
+  // Old one-page links (/#privacy etc.) now live on their own pages.
+  (function () {
+    var pages = ['support', 'safety', 'privacy', 'terms', 'community', 'faith'];
+    var h = location.hash.replace('#', '');
+    if (pages.indexOf(h) !== -1) location.replace('/' + h + '/');
+  })();
+</script>
 <script>
   // Scroll animations are an enhancement: skip them for people who ask for reduced motion.
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js');
@@ -21,17 +30,18 @@
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
 <nav class="nav" id="nav">
-  <a href="#top" class="nav-brand" aria-label="All Alphas home">
-    <img src="assets/logo.svg" alt="">
+  <a href="/" class="nav-brand" aria-label="All Alphas home">
+    <img src="/assets/logo.svg" alt="">
     <span class="nav-wordmark">ALL ALPHAS</span>
   </a>
   <div class="nav-links">
-    <a class="nav-link" href="#support">Support</a>
-    <a class="nav-link" href="#safety">Safety</a>
-    <a class="nav-link" href="#privacy">Privacy</a>
-    <a class="nav-link" href="#terms">Terms</a>
-    <a class="nav-link" href="#community">Community</a>
-    <a class="pill" href="#beta" id="join-link">Join the beta</a>
+    <a class="nav-link" href="/support/">Support</a>
+    <a class="nav-link" href="/safety/">Safety</a>
+    <a class="nav-link" href="/privacy/">Privacy</a>
+    <a class="nav-link" href="/terms/">Terms</a>
+    <a class="nav-link" href="/community/">Community</a>
+    <a class="nav-link" href="/faith/">Faith</a>
+    <a class="pill" href="/#beta" id="join-link">Join the beta</a>
   </div>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
 </nav>
@@ -66,7 +76,7 @@
           <span>I'm 18 or older and I have an iPhone.</span>
         </label>
         <p class="beta-status" id="beta-status" role="status" aria-live="polite"></p>
-        <p class="beta-note">We only use your name and email to send your beta invite and a few updates about the beta. See the <a href="#privacy">Privacy Policy</a>.</p>
+        <p class="beta-note">We only use your name and email to send your beta invite and a few updates about the beta. See the <a href="/privacy/">Privacy Policy</a>.</p>
       </form>
       <div class="beta-done" id="beta-done" hidden>
         <span class="beta-title">YOU'RE ON THE LIST.</span>
@@ -107,234 +117,18 @@
   </div>
 </div>
 
-<section class="section" id="support">
-  <div class="section-label">
-    <span class="eyebrow">SUPPORT</span>
-    <h2>GET HELP.</h2>
-  </div>
-  <div class="support-body">
-    <div class="email-card">
-      <div>
-        <span class="label">EMAIL</span>
-        <a href="mailto:support@allalphas.com">SUPPORT@ALLALPHAS.COM</a>
-      </div>
-      <a class="pill" href="mailto:support@allalphas.com">Email us</a>
-    </div>
-    <div class="help-grid">
-      <div class="help-card">
-        <span class="title">RESTORE YOUR DATA</span>
-        <span class="body">Profile → Privacy &amp; data → Restore from backup. Or sign in with All Alphas Pro and turn on Cloud sync.</span>
-      </div>
-      <div class="help-card">
-        <span class="title">MANAGE SUBSCRIPTION</span>
-        <span class="body">iPhone Settings → your name → Subscriptions → All Alphas.</span>
-      </div>
-      <div class="help-card">
-        <span class="title">DELETE YOUR ACCOUNT</span>
-        <span class="body">Profile → Account → Delete account. This removes your account and cloud data.</span>
-      </div>
-    </div>
-    <span class="support-foot">When you email, include your iOS version and the app version (shown at the bottom of Profile).</span>
-  </div>
-</section>
-
-<div class="safety-panel" id="safety">
-  <div class="section-label">
-    <span class="eyebrow">SAFETY DISCLAIMER</span>
-    <h2>SAFETY<br>FIRST.<br>ALWAYS.</h2>
-  </div>
-  <div class="safety-body">
-    <p>All Alphas is a training log and timer. It doesn't teach firearm safety and it's no substitute for qualified instruction, range rules or the law where you live.</p>
-    <div class="rules-card">
-      <span class="label">THE FOUR RULES OF FIREARM SAFETY · FOLLOW THEM AT ALL TIMES</span>
-      <div class="rules-grid">
-        <div class="rule"><span class="num">1</span><span class="text">Treat every firearm as if it is loaded.</span></div>
-        <div class="rule"><span class="num">2</span><span class="text">Never point the muzzle at anything you aren't willing to destroy.</span></div>
-        <div class="rule"><span class="num">3</span><span class="text">Keep your finger off the trigger until your sights are on the target and you've decided to shoot.</span></div>
-        <div class="rule"><span class="num">4</span><span class="text">Be sure of your target and what is beyond it.</span></div>
-      </div>
-    </div>
-    <div class="safety-list">
-      <span><strong>Dry fire:</strong> confirm the firearm is unloaded and keep all live ammunition out of the room. Aim only at a safe backstop.</span>
-      <span>Obey range officers, range rules and match rules. Never look at your phone with a loaded firearm in your hand.</span>
-      <span>Drills in the app are examples. Only attempt what you can do safely, at your own skill level.</span>
-    </div>
-    <p class="liability">Firearms training carries risks that no rule, drill or app can remove. Following these rules, the drills in the app or any other information in it does not guarantee your safety or the safety of others, and All Alphas makes no promise or warranty that it will. All Alphas is provided "as is", without warranties of any kind. You are solely responsible for how you handle firearms and ammunition. To the fullest extent the law allows, VanLi Labs LLC and All Alphas accept no responsibility or liability for any injury, death, harm, property damage, loss or legal consequence arising from your use of the app or from any drill, time or score it shows, even if you followed every safety rule.</p>
-  </div>
-</div>
-
-<section class="section" id="privacy">
-  <div class="section-label">
-    <span class="eyebrow">PRIVACY POLICY</span>
-    <h2>YOUR DATA<br>IS YOURS.</h2>
-    <span class="section-date">Effective October 15, 2026</span>
-  </div>
-  <div class="legal-list">
-    <div class="legal-item">
-      <h3>WHO WE ARE</h3>
-      <p>All Alphas is made by VanLi Labs LLC (“we”), Kansas, USA. This policy covers the All Alphas iPhone app and allalphas.com.</p>
-    </div>
-    <div class="legal-item">
-      <h3>WHAT STAYS ON YOUR PHONE</h3>
-      <p>Drills, runs, scores, gear, ammo counts, reminders, checklists, range day plans and target photos are stored on your iPhone. We can’t see them unless you turn on Cloud sync or share something. Most of the app works without an account; Community (friends, teams, sharing) and Cloud sync need one.</p>
-    </div>
-    <div class="legal-item">
-      <h3>WHAT WE COLLECT</h3>
-      <p><strong>If you create an account:</strong> your email address (from Sign in with Apple, which may be Apple’s private relay address, or the address you enter to get a 6-digit sign-in code); your name, if Sign in with Apple shares it, which becomes your display name (change it in Profile → Account); profile details you add: @username, division and classification; a friend code; and an account ID that links them.</p>
-      <p><strong>What other people can see:</strong> anyone who searches your exact @username or friend code can see your display name, @username, division and classification. Friends and teammates also see what you share with them.</p>
-      <p><strong>If you use friends and teams:</strong> your friend list and requests, people you’ve blocked, and the teams you belong to; what you choose to share: runs and personal bests (time, score, hit factor, shot splits), drills you send, range day invites (date, time, range name and address, drills; never your notes or checklist), and team chat messages, which the members of that team can see; reports you make and moderation records, such as a suspension.</p>
-      <p><strong>With All Alphas Pro and Cloud sync turned on:</strong> a copy of your training data, so it can come back on a new phone. Only your account can read it. Target photos only if you also turn on Include photos (a smaller copy; the original stays on your phone).</p>
-      <p><strong>If you join the beta list on allalphas.com:</strong> your first name, last name (optional) and email address; your confirmation that you’re 18 or older and have an iPhone; and the dates you signed up and, later, were invited. We use them only to send your TestFlight invite and a few updates about the beta. We don’t sell or share the list, or use it for ads. Joining the list doesn’t create an All Alphas account.</p>
-      <p><strong>If you subscribe:</strong> your subscription status (plan, renewal and end dates) from Apple, through RevenueCat. We never see your payment details.</p>
-      <p><strong>If you choose to share error reports</strong> (the app asks when you first open it; change it any time in Profile → Privacy &amp; data): what went wrong, where in the app, your app and iOS version, and a random ID for your phone. If you’re signed in, the report is linked to your account. Reports never include your runs, gear, photos or email address.</p>
-      <p><strong>Automatically, when the app goes online:</strong> like any internet service, our providers receive your IP address and basic request logs when the app signs in, syncs or loads community content, or when you join the beta list on the website. When the app checks for updates (Expo), it sends a random install ID, the app version and your IP address, not your data.</p>
-    </div>
-    <div class="legal-item">
-      <h3>PERMISSIONS</h3>
-      <p>Every permission is optional and asked only when you use the feature. Camera and photos: target photos, and scanning QR codes for shared drills, friend and team codes. Bluetooth: connecting to an SG Timer shot timer, including while the phone is in your pocket during a drill. Notifications: maintenance, battery and ammo reminders, scheduled on your phone. The app doesn’t use your location.</p>
-    </div>
-    <div class="legal-item">
-      <h3>WHAT WE DON’T DO</h3>
-      <p>We don’t sell or rent your data, show ads, or use advertising or analytics trackers. We don’t track you across other companies’ apps or websites.</p>
-    </div>
-    <div class="legal-item">
-      <h3>WHO PROCESSES YOUR DATA</h3>
-      <p>These companies handle data only to run All Alphas for us, under their own security and privacy terms: <strong>Supabase</strong> (database, sign-in, photo storage: account, profile, community content, synced data, error reports, the beta list); <strong>Apple</strong> (Sign in with Apple, payments, and TestFlight when we invite you to the beta); <strong>RevenueCat</strong> (subscription status: account ID, purchase receipts); <strong>Resend</strong> (sending sign-in codes: email address); <strong>Expo</strong> (app updates: install ID, app version, IP address).</p>
-    </div>
-    <div class="legal-item">
-      <h3>HOW LONG WE KEEP IT</h3>
-      <p><strong>Account deletion:</strong> delete your account in the app at Profile → Account → Delete account, or email us. Your account, profile, friends, team memberships, shared content, chat messages, synced data and cloud photos are removed right away; copies in backups expire within 30 days. A team you own with other members stays for them and passes to its longest-serving admin (or member). Data on your phone stays until you delete it or the app.</p>
-      <p><strong>When Pro ends:</strong> nothing on your phone is deleted. Syncing stops, and your cloud copy is kept for 90 days in case you subscribe again, then deleted.</p>
-      <p><strong>The beta list</strong> is kept until the beta ends or you ask us to remove you (email <a href="mailto:privacy@allalphas.com">privacy@allalphas.com</a>), whichever comes first.</p>
-      <p><strong>Error reports</strong> are kept up to 90 days; after account deletion they stay without the link to your account. <strong>Reports and moderation records</strong> are kept as long as needed to keep the community safe. Turning off Cloud sync keeps the cloud copy; Delete cloud copy in Cloud sync removes it right away.</p>
-    </div>
-    <div class="legal-item">
-      <h3>YOUR RIGHTS &amp; CHILDREN</h3>
-      <p>You can ask to see, correct, export or delete your data at any time: email <a href="mailto:privacy@allalphas.com">privacy@allalphas.com</a>; we answer within 60 days. You can also export everything yourself (Profile → Export full backup) and delete your account in the app. All Alphas is for adults 18 and older. We don’t knowingly collect data from anyone under 18; if you think a child has an account, tell us and we’ll delete it.</p>
-    </div>
-    <div class="legal-item">
-      <h3>SECURITY</h3>
-      <p>Data travels encrypted (HTTPS). Synced data is readable only by your account. No system is perfectly secure; tell us at <a href="mailto:privacy@allalphas.com">privacy@allalphas.com</a> if you find a problem.</p>
-    </div>
-    <div class="legal-item">
-      <h3>CHANGES &amp; CONTACT</h3>
-      <p>If this policy changes, we’ll update the date above and tell you in the app if the change is significant. Questions: <a href="mailto:privacy@allalphas.com">privacy@allalphas.com</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="terms">
-  <div class="section-label">
-    <span class="eyebrow">TERMS OF SERVICE</span>
-    <h2>THE<br>FINE PRINT.</h2>
-    <span class="section-date">Effective October 14, 2026</span>
-  </div>
-  <div class="legal-list">
-    <div class="clause">
-      <span class="num">01</span>
-      <div class="body">
-        <h3>AGREEMENT</h3>
-        <p>By using All Alphas, you agree to these terms, our Privacy Policy, our Safety Disclaimer and our Community Guidelines. You must be 18 or older and legally allowed to own and use firearms where you live.</p>
-      </div>
-    </div>
-    <div class="clause">
-      <span class="num">02</span>
-      <div class="body">
-        <h3>THE APP</h3>
-        <p>All Alphas is a training log and timer. Times, scores and hit factors are only as accurate as your device, your shot timer and the information you enter. They aren’t official match results. The app doesn’t teach firearm safety and is no substitute for qualified instruction, range rules or the law.</p>
-      </div>
-    </div>
-    <div class="clause">
-      <span class="num">03</span>
-      <div class="body">
-        <h3>ACCOUNTS</h3>
-        <p>An account is optional. If you create one, keep your sign-in secure; you’re responsible for activity on your account. You can delete it any time in Profile → Account. We may suspend or close any account at any time, for any reason.</p>
-      </div>
-    </div>
-    <div class="clause">
-      <span class="num">04</span>
-      <div class="body">
-        <h3>ALL ALPHAS PRO</h3>
-        <p>Pro is a subscription billed to your Apple ID, monthly or yearly. It renews automatically unless you cancel at least 24 hours before the current period ends. Manage or cancel it in Settings → your name → Subscriptions. Refunds are handled by Apple.</p>
-        <p>If a free trial is offered and you don’t cancel at least 24 hours before it ends, the paid subscription starts. Prices are shown in the App Store before you buy; if a price changes, Apple tells you first.</p>
-        <p>When Pro ends, nothing on your phone is deleted. Items over the free limits become view-only (firearms and teams first get a 90-day grace period). Cloud sync stops; your cloud copy is kept for 90 days, then deleted. Lifetime Pro we give to some people has no end date; we may remove it if the account breaks these terms. Deleting your account doesn’t cancel an Apple subscription; cancel it in Settings as well.</p>
-      </div>
-    </div>
-    <div class="clause">
-      <span class="num">05</span>
-      <div class="body">
-        <h3>COMMUNITY CONDUCT</h3>
-        <p>We have zero tolerance for objectionable content and abusive users. Don’t post anything illegal, threatening, harassing, hateful, sexually explicit or unsafe. Don’t impersonate anyone. Don’t use the app to organize the sale of any item. Our <a href="#community">Community Guidelines</a> explain these rules in more detail.</p>
-        <p>You can report content and block people from the ⋯ menu or by long-pressing; blocking takes effect immediately. We review reports and may remove content, hide team names, and suspend or close accounts, with or without notice.</p>
-        <p>You keep ownership of what you post. You give us a license to store, display and send it to the people you share it with, only to run the app. The license ends when you delete the content or your account, except for copies others already saved (for example, a drill a friend imported).</p>
-      </div>
-    </div>
-    <div class="clause">
-      <span class="num">06</span>
-      <div class="body">
-        <h3>NO WARRANTY; LIMITS</h3>
-        <p>The app is provided “as is”, without warranties of any kind. You’re responsible for how you train and for following range rules and the law. To the extent the law allows, we’re not liable for injury, loss or damage from shooting, training or using the app. Our total liability is limited to the amount you paid us in the 12 months before a claim.</p>
-      </div>
-    </div>
-    <div class="clause">
-      <span class="num">07</span>
-      <div class="body">
-        <h3>APPLE</h3>
-        <p>These terms are between you and VanLi Labs LLC (doing business as All Alphas), not Apple. Your license to use the app is governed by Apple’s <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Standard End User License Agreement</a>; these terms add to it. Apple has no responsibility for the app or for supporting it, and isn’t responsible for claims about the app. Apple and its subsidiaries are third-party beneficiaries of these terms and may enforce them.</p>
-      </div>
-    </div>
-    <div class="clause">
-      <span class="num">08</span>
-      <div class="body">
-        <h3>CHANGES &amp; LAW</h3>
-        <p>We may update these terms. We’ll post the new date here and tell you in the app if the change is significant. These terms are governed by the laws of Kansas, USA. Contact: <a href="mailto:support@allalphas.com">support@allalphas.com</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="community">
-  <div class="section-label">
-    <span class="eyebrow">COMMUNITY GUIDELINES</span>
-    <h2>TRAIN HARD.<br>BE DECENT.</h2>
-    <span class="section-date">Effective October 14, 2026</span>
-  </div>
-  <div class="legal-list">
-    <div class="legal-item">
-      <h3>THE SHORT VERSION</h3>
-      <p>All Alphas is for shooters who want to get better and help each other get better. Be respectful, even when you’re competing. Keep it about training. Keep it safe and legal. Don’t sell anything. These rules cover everything you share in the app (your name and @username, team names, team chat, shared runs and personal bests, drills you send, range day invites) and are part of our Terms of Service.</p>
-    </div>
-    <div class="legal-item">
-      <h3>DON’T POST</h3>
-      <p><strong>Harassment or hate:</strong> threats, bullying, slurs, or attacks on anyone for who they are. <strong>Sexual or graphic content</strong>, including violent or gory images or descriptions. <strong>Unsafe content:</strong> anything that encourages breaking safety rules, unsafe gun handling, or shooting outside a safe, legal range or backstop. <strong>Illegal activity</strong>, or help with it.</p>
-      <p><strong>Sales of any kind:</strong> don’t use the app to buy, sell, trade or organize the sale of any item, including firearms, parts, ammunition and gear. No ads or spam. <strong>Other people’s private information:</strong> addresses, phone numbers, or where someone will be, unless it’s yours to share; share range day invites only with people you trust. <strong>Impersonation</strong> of another person, a club, a range or a company. <strong>Cheating the leaderboards</strong> with runs you didn’t shoot or times you made up. <strong>Someone else’s work</strong> without permission, such as a coach’s paid drills.</p>
-    </div>
-    <div class="legal-item">
-      <h3>NAMES &amp; TEAM CHAT</h3>
-      <p>Display names, @usernames and team names follow these rules too: offensive names are blocked when you choose them, and moderators can reset a name that slips through. Team chat is private to the members of a team, but these rules still apply there; team owners and admins can delete messages in their team, and anyone in the team can report a message.</p>
-    </div>
-    <div class="legal-item">
-      <h3>REPORT &amp; BLOCK</h3>
-      <p><strong>Report</strong> anything that breaks these rules: long-press a message or post, or use the ⋯ menu on a person, team, shared run, drill or invite. Reports go to our moderators; the person isn’t told who reported them. <strong>Block</strong> anyone you don’t want to hear from: it works right away, they can’t contact you, invite you or see what you share, and you won’t see them. In danger, or someone is? Contact local emergency services first.</p>
-    </div>
-    <div class="legal-item">
-      <h3>WHAT WE DO</h3>
-      <p>We review reports and may, with or without notice, remove a message, shared run, drill or invite; reset a name or hide a team; suspend an account from community features (the person keeps everything on their own phone); or close an account. We decide what breaks these rules, and we may act on things that aren’t listed here if they harm the community. Questions or appeals: <a href="mailto:support@allalphas.com">support@allalphas.com</a>. We read every appeal and reply within 60 days.</p>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="brand">
-    <img src="assets/logo.svg" alt="">
+    <img src="/assets/logo.svg" alt="">
     <span>© 2026 VanLi Labs LLC · All Alphas · allalphas.com</span>
   </div>
   <div class="links">
-    <a href="#support">Support</a>
-    <a href="#safety">Safety</a>
-    <a href="#privacy">Privacy</a>
-    <a href="#terms">Terms</a>
-    <a href="#community">Community</a>
+    <a href="/support/">Support</a>
+    <a href="/safety/">Safety</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+    <a href="/community/">Community</a>
+    <a href="/faith/">Faith</a>
   </div>
   <div class="social-links">
     <a href="https://instagram.com/allalphas.app" target="_blank" rel="noopener">Instagram</a>
@@ -342,6 +136,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=3"></script>
+<script src="/app.js?v=4"></script>
 </body>
 </html>
