@@ -11,11 +11,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=8">
+<link rel="stylesheet" href="/styles.css?v=9">
 <script>
   // Old one-page links (/#privacy etc.) now live on their own pages.
   (function () {
-    var pages = ['support', 'safety', 'privacy', 'terms', 'community', 'faith'];
+    var pages = ['privacy', 'terms', 'community'];
     var h = location.hash.replace('#', '');
     if (pages.indexOf(h) !== -1) location.replace('/' + h + '/');
   })();
@@ -35,10 +35,12 @@
     <span class="nav-wordmark">ALL ALPHAS</span>
   </a>
   <div class="nav-links">
-    <a class="nav-link" href="/" aria-current="page">Home</a>
-    <a class="nav-link" href="/faith/">Faith</a>
-    <a class="nav-link" href="/safety/">Safety</a>
-    <a class="nav-link" href="/support/">Support</a>
+    <a class="nav-link" href="/#faith">Faith</a>
+    <a class="nav-link" href="/#safety">Safety</a>
+    <a class="nav-link" href="/#support">Support</a>
+    <a class="nav-link" href="/privacy/">Privacy</a>
+    <a class="nav-link" href="/terms/">Terms</a>
+    <a class="nav-link" href="/community/">Community</a>
     <a class="pill" href="https://testflight.apple.com/join/QeFHPPyd" target="_blank" rel="noopener" id="join-link">Download now</a>
   </div>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
@@ -86,18 +88,93 @@
   </div>
 </div>
 
+<section class="faith" id="faith">
+  <h2>STATEMENT OF FAITH</h2>
+  <span class="faith-rule" aria-hidden="true"></span>
+  <div class="faith-body">
+    <p>Serving our Lord and Savior, Jesus Christ, will always be our first priority.</p>
+    <p>Under no circumstances will we ever sacrifice this. Our faith will be shown by both words and actions as we grow.</p>
+    <p>Faith is the driver of every decision we make and we take deep responsibility in the stewardship He has entrusted us.</p>
+    <p>We encourage everyone to find and love Him, as He will always love you.</p>
+  </div>
+  <figure class="faith-verse">
+    <figcaption>COLOSSIANS 3:23 (NIV)</figcaption>
+    <blockquote>&ldquo;Whatever you do, work at it with all your heart, as working for the Lord.&rdquo;</blockquote>
+  </figure>
+  <div class="faith-brand">
+    <img src="/assets/logo.svg" alt="">
+    <span>ALL ALPHAS</span>
+  </div>
+</section>
+
+<div class="safety-panel" id="safety">
+  <div class="section-label">
+    <span class="eyebrow">SAFETY DISCLAIMER</span>
+    <h2>SAFETY<br>FIRST.<br>ALWAYS.</h2>
+  </div>
+  <div class="safety-body">
+    <p>All Alphas is a training log and timer. It doesn't teach firearm safety and it's no substitute for qualified instruction, range rules or the law where you live.</p>
+    <div class="rules-card">
+      <span class="label">THE FOUR RULES OF FIREARM SAFETY · FOLLOW THEM AT ALL TIMES</span>
+      <div class="rules-grid">
+        <div class="rule"><span class="num">1</span><span class="text">Treat every firearm as if it is loaded.</span></div>
+        <div class="rule"><span class="num">2</span><span class="text">Never point the muzzle at anything you aren't willing to destroy.</span></div>
+        <div class="rule"><span class="num">3</span><span class="text">Keep your finger off the trigger until your sights are on the target and you've decided to shoot.</span></div>
+        <div class="rule"><span class="num">4</span><span class="text">Be sure of your target and what is beyond it.</span></div>
+      </div>
+    </div>
+    <div class="safety-list">
+      <span><strong>Dry fire:</strong> confirm the firearm is unloaded and keep all live ammunition out of the room. Aim only at a safe backstop.</span>
+      <span>Obey range officers, range rules and match rules. Never look at your phone with a loaded firearm in your hand.</span>
+      <span>Drills in the app are examples. Only attempt what you can do safely, at your own skill level.</span>
+    </div>
+    <p class="liability">Firearms training carries risks that no rule, drill or app can remove. Following these rules, the drills in the app or any other information in it does not guarantee your safety or the safety of others, and All Alphas makes no promise or warranty that it will. All Alphas is provided "as is", without warranties of any kind. You are solely responsible for how you handle firearms and ammunition. To the fullest extent the law allows, VanLi Labs LLC and All Alphas accept no responsibility or liability for any injury, death, harm, property damage, loss or legal consequence arising from your use of the app or from any drill, time or score it shows, even if you followed every safety rule.</p>
+  </div>
+</div>
+
+<section class="section" id="support">
+  <div class="section-label">
+    <span class="eyebrow">SUPPORT</span>
+    <h2>GET HELP.</h2>
+  </div>
+  <div class="support-body">
+    <div class="email-card">
+      <div>
+        <span class="label">EMAIL</span>
+        <a href="mailto:support@allalphas.com">SUPPORT@ALLALPHAS.COM</a>
+      </div>
+      <a class="pill" href="mailto:support@allalphas.com">Email us</a>
+    </div>
+    <div class="help-grid">
+      <div class="help-card">
+        <span class="title">RESTORE YOUR DATA</span>
+        <span class="body">Profile → Privacy &amp; data → Restore from backup. Or sign in with All Alphas Pro and turn on Cloud sync.</span>
+      </div>
+      <div class="help-card">
+        <span class="title">MANAGE SUBSCRIPTION</span>
+        <span class="body">iPhone Settings → your name → Subscriptions → All Alphas.</span>
+      </div>
+      <div class="help-card">
+        <span class="title">DELETE YOUR ACCOUNT</span>
+        <span class="body">Profile → Account → Delete account. This removes your account and cloud data.</span>
+      </div>
+    </div>
+    <span class="support-foot">When you email, include your iOS version and the app version (shown at the bottom of Profile).</span>
+  </div>
+</section>
+
 <footer>
   <div class="brand">
     <img src="/assets/logo.svg" alt="">
     <span>© 2026 VanLi Labs LLC · All Alphas · allalphas.com</span>
   </div>
   <div class="links">
-    <a href="/support/">Support</a>
-    <a href="/safety/">Safety</a>
+    <a href="/#faith">Faith</a>
+    <a href="/#safety">Safety</a>
+    <a href="/#support">Support</a>
     <a href="/privacy/">Privacy</a>
     <a href="/terms/">Terms</a>
     <a href="/community/">Community</a>
-    <a href="/faith/">Faith</a>
   </div>
   <div class="social-links">
     <a href="https://instagram.com/allalphas.app" target="_blank" rel="noopener">Instagram</a>

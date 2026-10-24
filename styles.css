@@ -700,6 +700,7 @@ footer .social-links a:hover { color: var(--ink); }
 /* ---------- Faith ---------- */
 
 .faith {
+  scroll-margin-top: 24px;
   max-width: 820px;
   margin: 0 auto;
   padding: 96px var(--side-pad) 0;
@@ -710,7 +711,8 @@ footer .social-links a:hover { color: var(--ink); }
   text-align: center;
 }
 
-.faith h1 {
+.faith h1,
+.faith h2 {
   margin: 0;
   font: 600 clamp(44px, 9vw, 96px)/.95 'Barlow Condensed', sans-serif;
   letter-spacing: 1px;

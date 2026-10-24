@@ -6,26 +6,28 @@ no build step, no framework, no tracking. Hosted free on GitHub Pages at
 
 Built from the design handoff (`design_handoff_allalphas_website/`, option 3a):
 dark theme matching the app (`src/theme/tokens.ts` in
-`ethanlight1110/all-alphas`). Multi-page: a home page plus a page each for
-Support, Safety, Privacy, Terms, Community and Faith (top nav: Home, Faith, Safety, Support; the rest are in the footer). There is no build step,
-so the nav and footer are repeated in each page's HTML; change them in all 7.
+`ethanlight1110/all-alphas`). The home page is one long page: landing (hero, Download now button, features), then
+Faith, Safety and Support as scroll sections (`/#faith`, `/#safety`, `/#support`).
+Privacy, Terms and Community are their own pages. There is no build step,
+so the nav and footer are repeated in each page's HTML; change them in all 4
+(`index.html`, `privacy/`, `terms/`, `community/`).
 
 ## App Store Connect values
 
 - Privacy Policy URL: `https://allalphas.com/privacy/`
-- Support URL: `https://allalphas.com/support/`
-- Old one-page links (`/#privacy`, `/#support`, etc.) still work: the home page redirects them to the matching page.
+- Support URL: `https://allalphas.com/support/` (redirects to `/#support`)
+- Old one-page links `/#privacy`, `/#terms`, `/#community` redirect from the home page to those pages.
 
 ## Structure
 
 ```
-index.html      home: hero, beta sign-up, feature strip
-support/        Support page
-safety/         Safety Disclaimer page
+index.html      home: hero + Download now, features, Faith, Safety, Support
+support/        redirects to /#support (nicer URL for App Store Connect)
+safety/         redirects to /#safety
+faith/          redirects to /#faith
 privacy/        Privacy Policy page
 terms/          Terms of Service page
 community/      Community Guidelines page
-faith/          Statement of Faith page
 styles.css
 app.js          mobile nav, beta form, scroll motion (reveals, hero phones swiping off right, progress bar; off for reduced-motion visitors); no analytics, no trackers
 assets/         logo.svg, app icon, favicon, screenshots
