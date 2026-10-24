@@ -20,7 +20,7 @@ same page.
 ```
 index.html      the whole one-page site
 styles.css
-app.js          mobile nav toggle only; no analytics, no trackers
+app.js          mobile nav, beta form, scroll motion (reveals, hero parallax, progress bar; off for reduced-motion visitors); no analytics, no trackers
 assets/         logo.svg, app icon, favicon
 privacy/        redirects to /#privacy (nicer URL for App Store Connect)
 terms/          redirects to /#terms

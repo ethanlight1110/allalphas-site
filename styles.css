@@ -688,6 +688,54 @@ footer .social-links {
 
 footer .social-links a:hover { color: var(--ink); }
 
+/* ---------- Scroll motion ---------- */
+/* Everything here is gated on html.js, which a head script only sets when the visitor has not
+   asked for reduced motion. Without it the page is fully visible and static. */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms),
+    transform .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms),
+    translate .25s ease;
+}
+
+.js .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* The back phone is intentionally dimmed. */
+.js .hero-art .behind.reveal.in { opacity: .5; }
+
+/* Phones: rise in, then drift at different speeds while the hero scrolls away. */
+.js .hero-art .phone.reveal { transform: translateY(48px) scale(.97); }
+.js .hero-art .phone.reveal.in { transform: none; }
+.js .hero-art .front { translate: 0 calc(var(--py, 0) * -0.05px); }
+.js .hero-art .behind { translate: 0 calc(var(--py, 0) * 0.1px); }
+
+/* Hover lift uses `translate` so it never fights the reveal's `transform`. */
+.js .help-card:hover,
+.js .email-card:hover { translate: 0 -3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1150px) {

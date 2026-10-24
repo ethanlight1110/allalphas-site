@@ -112,6 +112,83 @@
     });
   }
 
+  // ---- Scroll motion ---------------------------------------------------
+  // Reveal-on-scroll, hero phone parallax and a progress bar. The head script only adds
+  // html.js when the visitor hasn't asked for reduced motion; without it none of this runs
+  // and the page stays fully visible.
+  var root = document.documentElement;
+  if (root.classList.contains('js')) {
+    if (!('IntersectionObserver' in window)) {
+      root.classList.remove('js');
+    } else {
+      // [selector, stagger in ms between siblings in the same group]
+      var groups = [
+        ['.hero-copy > *', 90],
+        ['.hero-art .phone', 160],
+        ['.feature', 90],
+        ['.support-body > *', 80],
+        ['.help-card', 90],
+        ['.section-label', 0],
+        ['.safety-body > *', 70],
+        ['.rule', 80],
+        ['.legal-item', 40],
+        ['.clause', 40],
+        ['footer', 0]
+      ];
+
+      var targets = [];
+      groups.forEach(function (g) {
+        document.querySelectorAll(g[0]).forEach(function (el, i) {
+          if (el.classList.contains('reveal')) return;
+          el.classList.add('reveal');
+          // Cap the stagger so long lists (legal text) never feel slow.
+          el.style.setProperty('--d', Math.min(i, 5) * g[1] + 'ms');
+          targets.push(el);
+        });
+      });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var r = entry.boundingClientRect;
+          // Reveal when it enters, and also anything we've already scrolled past
+          // (e.g. after jumping straight to #terms), so nothing stays hidden.
+          if (entry.isIntersecting || r.top < 0) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+
+      targets.forEach(function (el) { io.observe(el); });
+
+      var heroArt = document.querySelector('.hero-art');
+      var bar = document.getElementById('scroll-progress');
+      var ticking = false;
+
+      function frame() {
+        ticking = false;
+        var y = window.pageYOffset || 0;
+        var max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+        if (bar) bar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, y / max)) + ')';
+        if (heroArt && y < 1400) heroArt.style.setProperty('--py', y);
+        // Fast scrolls/jumps can skip an element without it ever intersecting; reveal anything
+        // that is already above the viewport.
+        targets.forEach(function (el) {
+          if (!el.classList.contains('in') && el.getBoundingClientRect().bottom < 0) {
+            el.classList.add('in');
+            io.unobserve(el);
+          }
+        });
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(frame); }
+      }, { passive: true });
+      window.addEventListener('resize', frame);
+      frame();
+    }
+  }
+
   // The nav button jumps to the form; put the cursor in the email field once it gets there.
   var join = document.getElementById('join-link');
   if (join && form) {
