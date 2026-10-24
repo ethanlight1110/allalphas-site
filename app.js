@@ -167,35 +167,89 @@
 
       targets.forEach(function (el) { io.observe(el); });
 
+      // Scroll work is kept off the layout path: every measurement is taken once up front (and
+      // again on resize / font load), and the scroll handler only writes transforms. Reading
+      // layout inside a scroll frame forces a style + layout pass each time, which is what makes
+      // iOS Safari stutter.
       var heroArt = document.querySelector('.hero-art');
+      var heroEl = heroArt && heroArt.closest('.hero');
+      var phones = heroArt ? [
+        { el: heroArt.querySelector('.front'),  x: 0.85, y: -30, r: 9 },
+        { el: heroArt.querySelector('.behind'), x: 1.15, y: -50, r: 12 }
+      ].filter(function (ph) { return ph.el; }) : [];
+      var canSwipe = !!(window.CSS && CSS.supports && CSS.supports('translate', '1px 1px') && CSS.supports('rotate', '1deg'));
       var bar = document.getElementById('scroll-progress');
+
       var ticking = false;
+      var maxScroll = 1, span = 700, vw = window.innerWidth;
+      var lastP = -1, lastBar = -1;
+      var pending = [];   // [element, document-y below which it counts as scrolled past]
+
+      function measure() {
+        var y = window.pageYOffset || 0;
+        vw = window.innerWidth;
+        maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        span = Math.max(1, (heroEl ? heroEl.offsetHeight : 700) * 0.9);
+        pending = [];
+        targets.forEach(function (el) {
+          if (el.classList.contains('in')) return;
+          // +80 covers the not-yet-applied rise offset; being a little late here is harmless
+          pending.push([el, el.getBoundingClientRect().bottom + y + 80]);
+        });
+        lastP = -1;
+      }
 
       function frame() {
         ticking = false;
         var y = window.pageYOffset || 0;
-        var max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
-        if (bar) bar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, y / max)) + ')';
-        if (heroArt) {
-          // 0 at the top of the page, 1 once the hero is mostly scrolled past.
-          var heroEl = heroArt.closest('.hero');
-          var span = Math.max(1, (heroEl ? heroEl.offsetHeight : 700) * 0.9);
-          heroArt.style.setProperty('--p', Math.min(1, y / span).toFixed(4));
+
+        var b = Math.min(1, Math.max(0, y / maxScroll));
+        if (bar && Math.abs(b - lastBar) > 0.002) {
+          lastBar = b;
+          bar.style.transform = 'scaleX(' + b.toFixed(3) + ')';
         }
-        // Fast scrolls/jumps can skip an element without it ever intersecting; reveal anything
-        // that is already above the viewport.
-        targets.forEach(function (el) {
-          if (!el.classList.contains('in') && el.getBoundingClientRect().bottom < 0) {
-            el.classList.add('in');
-            io.unobserve(el);
+
+        // Hero phones: 0 at the top, 1 once the hero is mostly scrolled past; stop writing once done.
+        if (canSwipe && phones.length) {
+          var p = Math.min(1, Math.max(0, y / span));
+          if (p !== lastP) {
+            lastP = p;
+            phones.forEach(function (ph) {
+              ph.el.style.translate = (p * ph.x * vw).toFixed(1) + 'px ' + (p * ph.y).toFixed(1) + 'px';
+              ph.el.style.rotate = (p * ph.r).toFixed(2) + 'deg';
+            });
           }
-        });
+        }
+
+        // Fast scrolls/jumps can skip an element without it ever intersecting, so reveal anything
+        // already above the viewport. Uses the positions cached in measure(): no layout reads.
+        if (pending.length) {
+          pending = pending.filter(function (item) {
+            if (y > item[1]) { item[0].classList.add('in'); io.unobserve(item[0]); return false; }
+            return true;
+          });
+        }
       }
 
-      window.addEventListener('scroll', function () {
+      function requestFrame() {
         if (!ticking) { ticking = true; requestAnimationFrame(frame); }
-      }, { passive: true });
-      window.addEventListener('resize', frame);
+      }
+
+      var resizeTimer;
+      function remeasure() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () { measure(); requestFrame(); }, 150);
+      }
+
+      window.addEventListener('scroll', requestFrame, { passive: true });
+      // Debounced: on phones the collapsing address bar fires resize constantly while scrolling.
+      window.addEventListener('resize', remeasure);
+      window.addEventListener('orientationchange', remeasure);
+      window.addEventListener('load', remeasure);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
+      if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.body);
+
+      measure();
       frame();
     }
   }
