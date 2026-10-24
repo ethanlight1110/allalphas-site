@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=7">
+<link rel="stylesheet" href="/styles.css?v=8">
 <script>
   // Old one-page links (/#privacy etc.) now live on their own pages.
   (function () {
@@ -35,13 +35,11 @@
     <span class="nav-wordmark">ALL ALPHAS</span>
   </a>
   <div class="nav-links">
-    <a class="nav-link" href="/support/">Support</a>
-    <a class="nav-link" href="/safety/">Safety</a>
-    <a class="nav-link" href="/privacy/">Privacy</a>
-    <a class="nav-link" href="/terms/">Terms</a>
-    <a class="nav-link" href="/community/">Community</a>
+    <a class="nav-link" href="/" aria-current="page">Home</a>
     <a class="nav-link" href="/faith/">Faith</a>
-    <a class="pill" href="/#beta" id="join-link">Join the beta</a>
+    <a class="nav-link" href="/safety/">Safety</a>
+    <a class="nav-link" href="/support/">Support</a>
+    <a class="pill" href="https://testflight.apple.com/join/QeFHPPyd" target="_blank" rel="noopener" id="join-link">Download now</a>
   </div>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
 </nav>
@@ -54,38 +52,9 @@
     <h1>TRAIN.<br>LOG.<br>GET FASTER.</h1>
     <p>All Alphas is a training aid for practical shooters. Run drills on a par timer, score hit factor, track every gun and round, and plan range days, all from your iPhone.</p>
     <div class="beta" id="beta">
-      <form class="beta-form" id="beta-form" novalidate>
-        <span class="beta-title">JOIN THE PUBLIC BETA</span>
-        <div class="beta-row">
-          <label class="visually-hidden" for="beta-first">First name</label>
-          <input class="beta-input" id="beta-first" name="first" type="text" autocomplete="given-name" placeholder="First name" maxlength="40" required>
-          <label class="visually-hidden" for="beta-last">Last name (optional)</label>
-          <input class="beta-input" id="beta-last" name="last" type="text" autocomplete="family-name" placeholder="Last name (optional)" maxlength="40">
-        </div>
-        <div class="beta-row">
-          <label class="visually-hidden" for="beta-email">Email address</label>
-          <input class="beta-input" id="beta-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required>
-          <button class="pill beta-submit" type="submit" id="beta-submit">Join the beta</button>
-        </div>
-        <div class="beta-trap" aria-hidden="true">
-          <label for="beta-website">Leave this field empty</label>
-          <input id="beta-website" name="website" type="text" tabindex="-1" autocomplete="off">
-        </div>
-        <label class="beta-check">
-          <input type="checkbox" id="beta-confirm" name="confirm">
-          <span>I'm 18 or older and I have an iPhone.</span>
-        </label>
-        <p class="beta-status" id="beta-status" role="status" aria-live="polite"></p>
-        <p class="beta-note">We only use your name and email to send your beta invite and a few updates about the beta. See the <a href="/privacy/">Privacy Policy</a>.</p>
-      </form>
-      <div class="beta-done" id="beta-done" hidden>
-        <span class="beta-title">YOU'RE ON THE LIST.</span>
-        <p>We'll email you your TestFlight invite as soon as the beta opens.</p>
-      </div>
-      <a class="store-badge" id="testflight-link" href="#" hidden>
-        <span class="small">Join the beta on</span>
-        <span class="big">TestFlight</span>
-      </a>
+      <span class="beta-title">JOIN THE PUBLIC BETA</span>
+      <a class="pill download-btn" href="https://testflight.apple.com/join/QeFHPPyd" target="_blank" rel="noopener">Download now</a>
+      <p class="beta-note">Opens in TestFlight. For adults 18 and older with an iPhone.</p>
     </div>
   </div>
   <div class="hero-art" aria-hidden="true">

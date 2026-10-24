@@ -924,3 +924,11 @@ footer .social-links a:hover { color: var(--ink); }
   .nav-links .pill { padding: 0 11px; font-size: 12px; }
   .nav-toggle { padding: 4px 4px; }
 }
+
+/* ---------- Download button ---------- */
+
+.download-btn {
+  height: 56px;
+  padding: 0 34px;
+  font-size: 17px;
+}
