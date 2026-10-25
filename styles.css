@@ -813,19 +813,44 @@ footer .social-links a:hover { color: var(--ink); }
 /* The back phone is intentionally dimmed. */
 .js .hero-art .behind.reveal.in { opacity: .5; }
 
-/* Phones: rise in, then swipe off to the right as you scroll down (scroll position drives it over the hero).
+/* Phones: fade/rise in, then swipe off to the right as you scroll down.
+   The swipe is a CSS scroll-driven (view-timeline) animation, so the browser runs it on the compositor thread,
+   in step with the finger. No JavaScript runs while scrolling (iOS Safari can't keep JS-driven
+   transforms in sync with its off-thread scrolling, which is what looked choppy). Browsers
+   without support keep the phones still on touch devices; desktop falls back to app.js.
    The hero clips horizontally so the off-screen phones never create a sideways scrollbar. */
 .js .hero { overflow-x: clip; }
-.js .hero-art .phone.reveal { transform: translateY(48px) scale(.97); }
-.js .hero-art .phone.reveal.in { transform: none; }
+.js .hero-art .phone.reveal { translate: 0 48px; transform: none; }
+.js .hero-art .phone.reveal.in { translate: 0 0; }
 .js .hero-art .phone {
-  /* translate is driven directly by scroll, so no easing on it (opacity/transform keep theirs) */
   transition:
     opacity .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms),
-    transform .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms);
-  will-change: transform, translate, rotate;
+    translate .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms);
+  will-change: transform;
 }
-/* translate / rotate on the phones are written by app.js as scroll position changes */
+
+@keyframes phone-swipe-front {
+  to { transform: translate3d(85vw, -30px, 0) rotate(9deg); }
+}
+@keyframes phone-swipe-behind {
+  to { transform: translate3d(115vw, -50px, 0) rotate(12deg); }
+}
+
+/* view() ties progress to each phone's own position: it stays put while it is on screen and
+   swipes right as it scrolls off the top, whether it sits high on desktop or below the text on a phone. */
+@supports (animation-timeline: view()) {
+  .js .hero-art .front,
+  .js .hero-art .behind {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-duration: 1ms; /* required by some engines; the timeline controls progress */
+    animation-timeline: view(block);
+    animation-range: exit 0% exit 100%;
+  }
+  .js .hero-art .front  { animation-name: phone-swipe-front; }
+  .js .hero-art .behind { animation-name: phone-swipe-behind; }
+}
+/* (Fallback for desktop browsers without scroll-driven animations: app.js writes translate / rotate inline.) */
 
 /* Hover lift uses `translate` so it never fights the reveal's `transform`. */
 .js .help-card:hover,

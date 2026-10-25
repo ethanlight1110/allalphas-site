@@ -177,7 +177,13 @@
         { el: heroArt.querySelector('.front'),  x: 0.85, y: -30, r: 9 },
         { el: heroArt.querySelector('.behind'), x: 1.15, y: -50, r: 12 }
       ].filter(function (ph) { return ph.el; }) : [];
-      var canSwipe = !!(window.CSS && CSS.supports && CSS.supports('translate', '1px 1px') && CSS.supports('rotate', '1deg'));
+      // Phones swipe off via a CSS scroll-driven animation where the browser supports it (see
+      // styles.css). This JS version is only the fallback for desktop browsers without that
+      // support; on touch devices without it the phones simply stay put rather than stutter.
+      var cssSwipe = !!(window.CSS && CSS.supports && CSS.supports('animation-timeline', 'view()'));
+      var finePointer = !!(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches);
+      var canSwipe = !cssSwipe && finePointer &&
+        !!(window.CSS && CSS.supports && CSS.supports('translate', '1px 1px') && CSS.supports('rotate', '1deg'));
       var bar = document.getElementById('scroll-progress');
 
       var ticking = false;
