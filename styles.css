@@ -1019,7 +1019,6 @@ footer .social-links {
   .nav-wordmark { font-size: 1rem; letter-spacing: 0; }
   .nav-links .pill { padding: 0 0.6875rem; font-size: 0.75rem; }
   .nav-toggle { padding: 0.25rem 0.25rem; }
-  .feat-hero h1 { font-size: 2.75rem; } /* keeps "TO GET FASTER." inside a 320px screen */
 }
 
 /* ---------- Download button ---------- */
@@ -1160,4 +1159,9 @@ footer .social-links {
 @media (max-width: 40em) {
   .feat-grid { grid-template-columns: minmax(0, 1fr); padding-top: 4rem; }
   .feat-cta { padding-top: 4.5rem; }
+}
+
+/* Keeps "TO GET FASTER." inside a 320px screen (after the base rule so it wins). */
+@media (max-width: 22.5em) {
+  .feat-hero h1 { font-size: 2.75rem; }
 }
