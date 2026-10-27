@@ -9,7 +9,7 @@ dark theme matching the app (`src/theme/tokens.ts` in
 `ethanlight1110/all-alphas`). The home page is one long page: landing (hero, Join on TestFlight button, features), then
 Faith, Safety and Support as scroll sections (`/#faith`, `/#safety`, `/#support`).
 Privacy, Terms and Community are their own pages. There is no build step,
-so the nav and footer are repeated in each page's HTML; change them in all 5 (the nav is Features, Faith, Safety, Support + the beta pill; Privacy, Terms and Community are footer-only)
+so the nav and footer are repeated in each page's HTML; change them in all 5 (the nav is Features, Privacy, Terms, Community + the beta pill; Faith, Safety and Support are home-page sections linked from the footer)
 (`index.html`, `features/`, `privacy/`, `terms/`, `community/`).
 
 ## App Store Connect values
