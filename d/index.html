@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#161618">
+<meta name="color-scheme" content="dark">
+<title>Shared drill — All Alphas</title>
+<meta name="description" content="A drill shared from All Alphas. Open it in the app or get All Alphas.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=13">
+<style>
+  /* Shared drill page: the link in a run image's QR code. With All Alphas installed, iOS opens
+     the app instead (apple-app-site-association); everyone else lands here. */
+  .drill-main { max-width: 34rem; margin: 0 auto; padding: 7.5rem 1.25rem 4rem; }
+  .drill-card {
+    background: var(--card);
+    background-image: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,0) 70%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 18px 40px -16px rgba(0,0,0,.6);
+    border-radius: 1.5rem;
+    padding: 1.75rem 1.5rem 1.5rem;
+  }
+  .drill-label { font: 500 0.75rem/1 'Geist', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); margin: 0; }
+  .drill-name { font: 600 2.75rem/1 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: -.01em; color: var(--ink); margin: .5rem 0 .5rem; overflow-wrap: anywhere; }
+  .drill-meta { font: 500 0.9375rem/1.4 'Geist', sans-serif; color: var(--ink); opacity: .85; margin: 0; }
+  .drill-desc { font: 400 1rem/1.55 'Geist', sans-serif; color: var(--mute); margin: 1rem 0 0; }
+  .drill-actions { display: grid; gap: .75rem; margin-top: 1.5rem; }
+  .drill-actions .pill { justify-content: center; height: 3.25rem; font-size: 1rem; }
+  .drill-actions .pill.secondary { background: var(--raise); color: var(--ink); }
+  .drill-note { font: 400 0.8125rem/1.5 'Geist', sans-serif; color: var(--mute); margin: 1rem 0 0; text-align: center; }
+  .drill-missing .drill-name { font-size: 2rem; }
+  @media (max-width: 30rem) { .drill-main { padding-top: 6rem; } .drill-name { font-size: 2.25rem; } }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="/" class="nav-brand" aria-label="All Alphas home">
+    <img src="/assets/logo.svg" alt="">
+    <span class="nav-wordmark">ALL ALPHAS</span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="/features/">Features</a>
+    <a class="nav-link" href="/privacy/">Privacy</a>
+    <a class="nav-link" href="/terms/">Terms</a>
+    <a class="nav-link" href="/community/">Community</a>
+    <a class="pill" href="https://testflight.apple.com/join/QeFHPPyd" target="_blank" rel="noopener" id="join-link">Join the beta</a>
+  </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+</nav>
+
+<main class="drill-main">
+  <article class="drill-card" id="drill" aria-live="polite">
+    <p class="drill-label">Run this drill</p>
+    <h1 class="drill-name" id="drill-name">Loading…</h1>
+    <p class="drill-meta" id="drill-meta"></p>
+    <p class="drill-desc" id="drill-desc" hidden></p>
+    <div class="drill-actions">
+      <a class="pill" id="open-app" href="allalphas://">Open in All Alphas</a>
+      <a class="pill secondary" href="https://testflight.apple.com/join/QeFHPPyd" target="_blank" rel="noopener">Get All Alphas (free beta)</a>
+    </div>
+    <p class="drill-note">Already have the app? Scanning the code with the iPhone camera opens the drill in All Alphas, ready to save.</p>
+  </article>
+</main>
+
+<footer>
+  <div class="brand">
+    <img src="/assets/logo.svg" alt="">
+    <span>© 2026 VanLi Labs LLC · All Alphas · allalphas.com</span>
+  </div>
+  <div class="links">
+    <a href="/#faith">Faith</a>
+    <a href="/#safety">Safety</a>
+    <a href="/#support">Support</a>
+    <a href="/features/">Features</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+    <a href="/community/">Community</a>
+  </div>
+  <div class="social-links">
+    <a href="https://instagram.com/allalphas.app" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://x.com/allalphas.app" target="_blank" rel="noopener">X</a>
+  </div>
+</footer>
+
+<script src="/d/drills.js?v=1"></script>
+<script>
+  // ?k=bill: a library drill (listed in drills.js). ?c=AB12CD34: someone's own drill, read from the
+  // All Alphas server with its public key (the same read the app does; 0034 drill_link).
+  (function () {
+    var SUPABASE_URL = 'https://angejsoovsozmifusyok.supabase.co';
+    var SUPABASE_KEY = 'sb_publishable_cPbH63FUT-T_7LQ0evo6zg_KDX5l-oz';
+    var params = new URLSearchParams(location.search);
+    var k = (params.get('k') || '').toLowerCase();
+    var c = (params.get('c') || '').toUpperCase();
+    var nameEl = document.getElementById('drill-name');
+    var metaEl = document.getElementById('drill-meta');
+    var descEl = document.getElementById('drill-desc');
+    var openEl = document.getElementById('open-app');
+
+    function show(name, meta, desc) {
+      nameEl.textContent = name;
+      metaEl.textContent = meta || '';
+      if (desc) { descEl.textContent = desc; descEl.hidden = false; }
+      document.title = name + ' — All Alphas';
+    }
+    function missing(why) {
+      document.getElementById('drill').classList.add('drill-missing');
+      show('Drill not found', why, '');
+      openEl.hidden = true;
+    }
+
+    // The compact drill the app shares: [1, name, description, scoring, category, mode, diagram,
+    // targets, steps[[name, shots, distance, distanceTo, metric, par, …]], …].
+    function metaFromPayload(p) {
+      var steps = p[8] || [];
+      var rounds = steps.reduce(function (a, s) { return a + (s[1] || 0); }, 0);
+      var unit = steps[0] && steps[0][4] ? 'm' : 'yd';
+      var all = [];
+      steps.forEach(function (s) { all.push(s[2]); if (s[3] != null) all.push(s[3]); });
+      var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
+      var dist = all.length ? (lo === hi ? lo + ' ' + unit : lo + '–' + hi + ' ' + unit) : '';
+      var dry = p[5] === 1;
+      var bits = [];
+      if (steps.length > 1) bits.push(steps.length + ' steps');
+      if (!dry) bits.push(rounds + ' rds');
+      if (dist) bits.push(dist);
+      bits.push(dry ? 'dry fire' : (p[3] === 1 ? 'IDPA' : 'USPSA'));
+      if (steps.length === 1) bits.push('par ' + Number(steps[0][5] || 0).toFixed(2));
+      return bits.join(' · ');
+    }
+
+    if (/^[a-z0-9-]{1,40}$/.test(k)) {
+      openEl.href = 'allalphas://d?k=' + k;
+      var d = (window.LIBRARY_DRILLS || {})[k];
+      if (d) show(d.name, d.meta, d.description);
+      else missing('This drill isn’t in the library. Update All Alphas to get it.');
+    } else if (/^[A-HJKMNP-Z2-9]{8}$/.test(c)) {
+      openEl.href = 'allalphas://d?c=' + c;
+      fetch(SUPABASE_URL + '/rest/v1/rpc/drill_link', {
+        method: 'POST',
+        headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p_code: c })
+      })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (rows) {
+          var row = rows && rows[0];
+          if (!row) return missing('This drill link has been taken down or never existed.');
+          var p = [];
+          try { p = JSON.parse(row.payload); } catch (e) { /* show the name only */ }
+          show(row.name, Array.isArray(p) ? metaFromPayload(p) : '', Array.isArray(p) && typeof p[2] === 'string' ? p[2] : '');
+        })
+        .catch(function () { show('Shared drill', 'Couldn’t load the drill right now. Open it in All Alphas, or try again.', ''); });
+    } else {
+      missing('This link doesn’t point at a drill.');
+    }
+  })();
+</script>
+<script src="/app.js?v=7"></script>
+</body>
+</html>
