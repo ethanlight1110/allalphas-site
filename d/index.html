@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-FI7ElrgJkqxZCNGgxyEfh9Lg0cNq12Wdctxcca5Zsi0='; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://angejsoovsozmifusyok.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#161618">
 <meta name="color-scheme" content="dark">
@@ -89,78 +90,7 @@
 </footer>
 
 <script src="/d/drills.js?v=1"></script>
-<script>
-  // ?k=bill: a library drill (listed in drills.js). ?c=AB12CD34: someone's own drill, read from the
-  // All Alphas server with its public key (the same read the app does; 0034 drill_link).
-  (function () {
-    var SUPABASE_URL = 'https://angejsoovsozmifusyok.supabase.co';
-    var SUPABASE_KEY = 'sb_publishable_cPbH63FUT-T_7LQ0evo6zg_KDX5l-oz';
-    var params = new URLSearchParams(location.search);
-    var k = (params.get('k') || '').toLowerCase();
-    var c = (params.get('c') || '').toUpperCase();
-    var nameEl = document.getElementById('drill-name');
-    var metaEl = document.getElementById('drill-meta');
-    var descEl = document.getElementById('drill-desc');
-    var openEl = document.getElementById('open-app');
-
-    function show(name, meta, desc) {
-      nameEl.textContent = name;
-      metaEl.textContent = meta || '';
-      if (desc) { descEl.textContent = desc; descEl.hidden = false; }
-      document.title = name + ' — All Alphas';
-    }
-    function missing(why) {
-      document.getElementById('drill').classList.add('drill-missing');
-      show('Drill not found', why, '');
-      openEl.hidden = true;
-    }
-
-    // The compact drill the app shares: [1, name, description, scoring, category, mode, diagram,
-    // targets, steps[[name, shots, distance, distanceTo, metric, par, …]], …].
-    function metaFromPayload(p) {
-      var steps = p[8] || [];
-      var rounds = steps.reduce(function (a, s) { return a + (s[1] || 0); }, 0);
-      var unit = steps[0] && steps[0][4] ? 'm' : 'yd';
-      var all = [];
-      steps.forEach(function (s) { all.push(s[2]); if (s[3] != null) all.push(s[3]); });
-      var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
-      var dist = all.length ? (lo === hi ? lo + ' ' + unit : lo + '–' + hi + ' ' + unit) : '';
-      var dry = p[5] === 1;
-      var bits = [];
-      if (steps.length > 1) bits.push(steps.length + ' steps');
-      if (!dry) bits.push(rounds + ' rds');
-      if (dist) bits.push(dist);
-      bits.push(dry ? 'dry fire' : (p[3] === 1 ? 'IDPA' : 'USPSA'));
-      if (steps.length === 1) bits.push('par ' + Number(steps[0][5] || 0).toFixed(2));
-      return bits.join(' · ');
-    }
-
-    if (/^[a-z0-9-]{1,40}$/.test(k)) {
-      openEl.href = 'allalphas://d?k=' + k;
-      var d = (window.LIBRARY_DRILLS || {})[k];
-      if (d) show(d.name, d.meta, d.description);
-      else missing('This drill isn’t in the library. Update All Alphas to get it.');
-    } else if (/^[A-HJKMNP-Z2-9]{8}$/.test(c)) {
-      openEl.href = 'allalphas://d?c=' + c;
-      fetch(SUPABASE_URL + '/rest/v1/rpc/drill_link', {
-        method: 'POST',
-        headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ p_code: c })
-      })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function (rows) {
-          var row = rows && rows[0];
-          if (!row) return missing('This drill link has been taken down or never existed.');
-          var p = [];
-          try { p = JSON.parse(row.payload); } catch (e) { /* show the name only */ }
-          show(row.name, Array.isArray(p) ? metaFromPayload(p) : '', Array.isArray(p) && typeof p[2] === 'string' ? p[2] : '');
-        })
-        .catch(function () { show('Shared drill', 'Couldn’t load the drill right now. Open it in All Alphas, or try again.', ''); });
-    } else {
-      missing('This link doesn’t point at a drill.');
-    }
-  })();
-</script>
-<script src="/app.js?v=7"></script>
+<script src="/d/drill.js?v=1"></script>
+<script src="/app.js?v=8"></script>
 </body>
 </html>

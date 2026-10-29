@@ -19,6 +19,14 @@
     });
   }
 
+  // Hide a hero phone whose screenshot fails to load (this used to be an inline onerror, which
+  // the Content-Security-Policy now blocks). The image may already have failed before this runs.
+  document.querySelectorAll('.hero-art .phone img').forEach(function (img) {
+    var hide = function () { img.closest('.phone').style.display = 'none'; };
+    if (img.complete && !img.naturalWidth) hide();
+    else img.addEventListener('error', hide);
+  });
+
   // Instant press feedback on iOS Safari: :active only fires there when some touch listener exists.
   document.addEventListener('touchstart', function () {}, { passive: true });
 
