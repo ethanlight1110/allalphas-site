@@ -22,7 +22,7 @@
   function missing(why) {
     document.getElementById('drill').classList.add('drill-missing');
     show('Drill not found', why, '');
-    openEl.hidden = true;
+    openEl.remove();
   }
   function unavailable() {
     show('Shared drill', 'Couldn’t load the drill right now. Open it in All Alphas, or try again.', '');

@@ -11,9 +11,10 @@
     card.classList.add('drill-missing');
     document.getElementById('title').textContent = 'Code not found';
     codeEl.textContent = 'This link is missing its code.';
-    openEl.hidden = true;
+    openEl.remove();
     return;
   }
-  codeEl.textContent = c.slice(0, 4) + ' ' + c.slice(4);
+  // Friend codes show as ABCD 2345, as in the app; team codes as one word.
+  codeEl.textContent = kind === 'f' ? c.slice(0, 4) + ' ' + c.slice(4) : c;
   openEl.href = kind === 'f' ? 'allalphas://friends/add?q=' + c : 'allalphas://teams/join?code=' + c;
 })();
