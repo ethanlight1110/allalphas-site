@@ -13,7 +13,7 @@ window.LIBRARY_DRILLS = {
  "blake": {
   "name": "Blake Drill",
   "meta": "6 rds · 7 yd · USPSA · par 2.00",
-  "description": "Three targets 1 yd apart at 7 yd. Draw, 2 on each. Goal 2.0 s: a 1.0 draw and five splits in the next second. (Ben Stoeger.)"
+  "description": "Three targets 1 yd apart at 7 yd. Draw, 2 on each. Goal 2.0 s: a 1.0 draw and five splits in the next second."
  },
  "doubles": {
   "name": "Doubles",
@@ -33,7 +33,7 @@ window.LIBRARY_DRILLS = {
  "assess50": {
   "name": "50-Round Pistol COF",
   "meta": "8 steps · 50 rds · 5–20 m · USPSA",
-  "description": "T.Rex Arms 50-round pistol course of fire. Three targets 5 m apart. 50 rounds, 250 points possible, no make-up shots."
+  "description": "50-round pistol course of fire. Three targets 5 m apart. 50 rounds, 250 points possible, no make-up shots."
  },
  "moz": {
   "name": "Mozambique",
@@ -43,7 +43,7 @@ window.LIBRARY_DRILLS = {
  "casino": {
   "name": "Casino Drill",
   "meta": "21 rds · 5 yd · USPSA · par 21.00",
-  "description": "One target with six numbered shapes, 5 yd, three 7-round mags. Draw: 1 shot on the 1, 2 on the 2, up to 6 on the 6, reloading when empty. Clean run under 21 s. (Tom Givens, Rangemaster.)"
+  "description": "One target with six numbered shapes, 5 yd, three 7-round mags. Draw: 1 shot on the 1, 2 on the 2, up to 6 on the 6, reloading when empty. Clean run under 21 s."
  },
  "nickel": {
   "name": "Triple Nickel",
@@ -63,62 +63,62 @@ window.LIBRARY_DRILLS = {
  "accel": {
   "name": "Accelerator",
   "meta": "12 rds · 25 yd · USPSA · par 6.00",
-  "description": "Three targets at 7, 15 and 25 yards, about a yard apart side to side. Hands relaxed at sides: draw, 2 on each, reload, 2 on each again. Change pace to match each target; goal about 6 s with mostly As. (Ben Stoeger.)"
+  "description": "Three targets at 7, 15 and 25 yards, about a yard apart side to side. Hands relaxed at sides: draw, 2 on each, reload, 2 on each again. Change pace to match each target; goal about 6 s with mostly As."
  },
  "mxad": {
   "name": "MXAD",
   "meta": "8 rds · 12 yd · USPSA · par 2.30",
-  "description": "Draw, 6 rounds on the 5-yard target, then 2 on the 12-yard target. Shoot the close one aggressively and stay relaxed. (Matt Pranka, Xray Alpha.)"
+  "description": "Draw, 6 rounds on the 5-yard target, then 2 on the 12-yard target. Shoot the close one aggressively and stay relaxed."
  },
  "vicepres": {
   "name": "Vice Pres",
   "meta": "12 rds · 7 yd · USPSA · par 6.00",
-  "description": "A simpler El Presidente: start facing the targets. Draw, 2 on each of 3 targets, reload, 2 on each again. Works dry too. (T.REX ARMS.)"
+  "description": "A simpler El Presidente: start facing the targets. Draw, 2 on each of 3 targets, reload, 2 on each again. Works dry too."
  },
  "twopos": {
   "name": "Two Position Drill",
   "meta": "8 rds · 9 yd · USPSA · par 5.00",
-  "description": "Two shooting positions, three targets. From the left: 2 left, 2 center. Move right: 2 right, 2 center. Work on getting into and out of position. (T.REX ARMS.)"
+  "description": "Two shooting positions, three targets. From the left: 2 left, 2 center. Move right: 2 right, 2 center. Work on getting into and out of position."
  },
  "designated": {
   "name": "Designated Target Drill",
   "meta": "12 rds · 15 yd · USPSA · par 8.00",
-  "description": "Six targets at different distances and angles. Engage them in an order you call before the beep. Set the array up however you like. (T.REX ARMS.)"
+  "description": "Six targets at different distances and angles. Engage them in an order you call before the beep. Set the array up however you like."
  },
  "carry": {
   "name": "Carry Pistol Assessment",
   "meta": "7 steps · 60 rds · 5–25 yd · USPSA",
-  "description": "T.REX ARMS carry pistol assessment. Two targets 5 yd apart, 5 to 25 yd, 60 rounds, every string from the holster. Hit factor over all strings. Day standard: 5.0+ Minuteman, 3.0 Militiaman, 1.5 Prepared Citizen."
+  "description": "Carry pistol assessment. Two targets 5 yd apart, 5 to 25 yd, 60 rounds, every string from the holster. Hit factor over all strings. Day standard: 5.0+ top level, 3.0 middle, 1.5 entry level."
  },
  "scrambler": {
   "name": "Scrambler Assessment",
   "meta": "2 steps · 28 rds · 10–20 m · USPSA",
-  "description": "T.REX ARMS movement assessment. Three targets 5 m apart, four positions at 10 and 20 m, shooting at each position and on the move. 28 rounds, 140 points possible, no make-up shots."
+  "description": "Movement assessment. Three targets 5 m apart, four positions at 10 and 20 m, shooting at each position and on the move. 28 rounds, 140 points possible, no make-up shots."
  },
  "changeup": {
   "name": "Distance Change Up",
   "meta": "6 rds · 15 yd · USPSA · par 3.00",
-  "description": "Two targets 5 yd away and 2 yd apart, a third at 15 yd. Hands relaxed at sides: 2 rounds on each, head box on the far one. Goal under 3 s with the head hits. (Ben Stoeger.)"
+  "description": "Two targets 5 yd away and 2 yd apart, a third at 15 yd. Hands relaxed at sides: 2 rounds on each, head box on the far one. Goal under 3 s with the head hits."
  },
  "groups": {
   "name": "Group Shooting",
   "meta": "5 rds · 25 yd · USPSA · untimed",
-  "description": "Untimed accuracy. 5 shots at a clear aiming point at 25 yd, each one perfect; abort and restart any shot you don’t like. Judge group size and where it sits. (Ben Stoeger.)"
+  "description": "Untimed accuracy. 5 shots at a clear aiming point at 25 yd, each one perfect; abort and restart any shot you don’t like. Judge group size and where it sits."
  },
  "fouraces": {
   "name": "Four Aces",
   "meta": "4 rds · 7 yd · USPSA · par 2.50",
-  "description": "Double, reload, double. Draw, 2 in the A-zone, reload, 2 more. Goals: 2.2 s at 3 yd, 2.3 s at 5 yd, 2.5 s at 7 yd. (Ben Stoeger.)"
+  "description": "Double, reload, double. Draw, 2 in the A-zone, reload, 2 more. Goals: 2.2 s at 3 yd, 2.3 s at 5 yd, 2.5 s at 7 yd."
  },
  "heads": {
   "name": "The Heads",
   "meta": "6 rds · 25 yd · USPSA · par 6.00",
-  "description": "Three targets 1 yd apart. Draw, 2 rounds in each head box. All As at 5 yd, mostly As at 15, any head hits at 25. Goal 6 s at 25 yd. (Ben Stoeger.)"
+  "description": "Three targets 1 yd apart. Draw, 2 rounds in each head box. All As at 5 yd, mostly As at 15, any head hits at 25. Goal 6 s at 25 yd."
  },
  "hardexit": {
   "name": "Hard Exit",
   "meta": "6 rds · 11 yd · USPSA · par 5.00",
-  "description": "Two targets from position A, one from position B. Leave A as early as you can: feet moving while you shoot the last target there. (Ben Stoeger.)"
+  "description": "Two targets from position A, one from position B. Leave A as early as you can: feet moving while you shoot the last target there."
  },
  "dry-draw": {
   "name": "Dry: Draw to First Shot",
