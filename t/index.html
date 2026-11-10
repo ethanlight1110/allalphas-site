@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'sha256-fsXvcHS9puAMAkwuewOJgTHK1kxkpbE6uqt6LYQK0rs='; font-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#161618">
+<meta name="color-scheme" content="dark">
+<title>Team invite — All Alphas</title>
+<meta name="description" content="Join a team on All Alphas with this invite code.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
+<link rel="stylesheet" href="/styles.css?v=14">
+<style>
+  /* Friend and team QR codes (/f, /t). With All Alphas installed, iOS opens the app instead
+     (apple-app-site-association); everyone else lands here. */
+  .code { font: 600 2.25rem/1 'Geist Mono', monospace; letter-spacing: .12em; color: var(--ink); margin: 1rem 0 0; }
+  .drill-main { max-width: 34rem; margin: 0 auto; padding: 7.5rem 1.25rem 4rem; }
+  .drill-card {
+    background: var(--card);
+    background-image: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,0) 70%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 18px 40px -16px rgba(0,0,0,.6);
+    border-radius: 1.5rem;
+    padding: 1.75rem 1.5rem 1.5rem;
+  }
+  .drill-label { font: 500 0.75rem/1 'Geist', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); margin: 0; }
+  .drill-name { font: 600 2.75rem/1 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: -.01em; color: var(--ink); margin: .5rem 0 .5rem; overflow-wrap: anywhere; }
+  .drill-meta { font: 500 0.9375rem/1.4 'Geist', sans-serif; color: var(--ink); opacity: .85; margin: 0; }
+  .drill-desc { font: 400 1rem/1.55 'Geist', sans-serif; color: var(--mute); margin: 1rem 0 0; }
+  .drill-actions { display: grid; gap: .75rem; margin-top: 1.5rem; }
+  .drill-actions .pill { justify-content: center; height: 3.25rem; font-size: 1rem; }
+  .drill-actions .pill.secondary { background: var(--raise); color: var(--ink); }
+  .drill-note { font: 400 0.8125rem/1.5 'Geist', sans-serif; color: var(--mute); margin: 1rem 0 0; text-align: center; }
+  .drill-missing .drill-name { font-size: 2rem; }
+  @media (max-width: 30rem) { .drill-main { padding-top: 6rem; } .drill-name { font-size: 2.25rem; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav" id="nav">
+  <a href="/" class="nav-brand" aria-label="All Alphas home">
+    <img src="/assets/logo.svg" alt="">
+    <span class="nav-wordmark">ALL ALPHAS</span>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a class="nav-link" href="/features/">Features</a>
+    <a class="nav-link" href="/privacy/">Privacy</a>
+    <a class="nav-link" href="/terms/">Terms</a>
+    <a class="nav-link" href="/community/">Community</a>
+    <a class="pill" href="https://testflight.apple.com/join/QeFHPPyd" target="_blank" rel="noopener" id="join-link">Join the beta</a>
+  </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
+</nav>
+
+<main id="main" class="drill-main">
+  <article class="drill-card" id="card" data-kind="t" aria-live="polite">
+    <p class="drill-label">Team invite</p>
+    <h1 class="drill-name" id="title">Join my team</h1>
+    <p class="drill-meta">Invite code</p>
+    <p class="code" id="code">—</p>
+    <div class="drill-actions">
+      <a class="pill" id="open-app" href="allalphas://">Open in All Alphas</a>
+      <a class="pill secondary" href="https://testflight.apple.com/join/QeFHPPyd" target="_blank" rel="noopener">Get All Alphas (free beta)</a>
+    </div>
+    <p class="drill-note">In All Alphas: Community → Join a team, then enter this code. Already have the app? Scanning the code with the iPhone camera opens it there.</p>
+  </article>
+</main>
+
+<footer>
+  <div class="brand">
+    <img src="/assets/logo.svg" alt="">
+    <span>© 2026 VanLi Labs LLC · All Alphas · allalphas.com</span>
+  </div>
+  <div class="links">
+    <a href="/#faith">Faith</a>
+    <a href="/#safety">Safety</a>
+    <a href="/#support">Support</a>
+    <a href="/features/">Features</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+    <a href="/community/">Community</a>
+  </div>
+  <div class="social-links">
+    <a href="https://instagram.com/allalphas.app" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://x.com/allalphas.app" target="_blank" rel="noopener">X</a>
+  </div>
+</footer>
+
+<script src="/code-link.js?v=1"></script>
+<script src="/app.js?v=9"></script>
+</body>
+</html>

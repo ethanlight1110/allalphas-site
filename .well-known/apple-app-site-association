@@ -5,7 +5,11 @@
         "appIDs": ["3U74PSALQK.com.allalphas.app"],
         "components": [
           { "/": "/d/*", "comment": "Shared drill links from run images (opens the drill in All Alphas)" },
-          { "/": "/d", "comment": "Same, without the trailing slash" }
+          { "/": "/d", "comment": "Same, without the trailing slash" },
+          { "/": "/f/*", "comment": "Friend QR codes (opens Add friend in All Alphas)" },
+          { "/": "/f" },
+          { "/": "/t/*", "comment": "Team QR codes (opens Join team in All Alphas)" },
+          { "/": "/t" }
         ]
       }
     ]
