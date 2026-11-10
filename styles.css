@@ -747,6 +747,11 @@ footer .brand {
 
 footer .brand img { width: 24px; height: auto; }
 
+/* Under app screenshots that show made-up numbers (audit L16). */
+.sample-note { flex-basis: 100%; width: 100%; margin: 0.75rem 0 0; text-align: left; font: 400 0.75rem/1.4 'Geist', sans-serif; color: var(--mute); }
+
+footer .tm { flex-basis: 100%; margin: 0; font-size: 0.75rem; line-height: 1.5; }
+
 footer .links {
   display: flex;
   gap: 1.75rem;
