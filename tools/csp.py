@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Writes the Content-Security-Policy <meta> tag into every page of the site.
 
-The policy only lets the browser run scripts and styles from allalphas.com itself, Google Fonts,
-and the few small inline <script>/<style> blocks the pages already have, allowed by their SHA-256
+The policy only lets the browser run scripts and styles from allalphas.com itself and the few small inline <script>/<style> blocks the pages already have, allowed by their SHA-256
 hash. If you change one of those inline blocks (or add one), the browser will refuse to run it
 until you re-run this script:
 
@@ -33,8 +32,8 @@ def policy(html, connect_supabase):
     return '; '.join([
         "default-src 'self'",
         ' '.join(["script-src 'self'"] + scripts),
-        ' '.join(["style-src 'self' https://fonts.googleapis.com"] + styles),
-        'font-src https://fonts.gstatic.com',
+        ' '.join(["style-src 'self'"] + styles),
+        "font-src 'self'",
         "img-src 'self'",
         "connect-src 'self'" + (' ' + SUPABASE if connect_supabase else ''),
         "object-src 'none'",

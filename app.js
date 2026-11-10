@@ -4,16 +4,28 @@
   var toggle = document.getElementById('nav-toggle');
   var nav = document.getElementById('nav');
 
+  function setOpen(open) {
+    nav.classList.toggle('menu-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('menu-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      setOpen(!nav.classList.contains('menu-open'));
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('menu-open')) {
+        setOpen(false);
+        toggle.focus();
+      }
     });
 
     // Close the mobile menu after tapping a link.
     nav.querySelectorAll('.nav-links a').forEach(function (link) {
       link.addEventListener('click', function () {
-        nav.classList.remove('menu-open');
+        setOpen(false);
         toggle.setAttribute('aria-expanded', 'false');
       });
     });

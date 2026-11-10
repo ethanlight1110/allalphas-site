@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-FI7ElrgJkqxZCNGgxyEfh9Lg0cNq12Wdctxcca5Zsi0='; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://angejsoovsozmifusyok.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'sha256-FI7ElrgJkqxZCNGgxyEfh9Lg0cNq12Wdctxcca5Zsi0='; font-src 'self'; img-src 'self'; connect-src 'self' https://angejsoovsozmifusyok.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#161618">
 <meta name="color-scheme" content="dark">
@@ -11,10 +11,7 @@
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=13">
+<link rel="stylesheet" href="/styles.css?v=14">
 <style>
   /* Shared drill page: the link in a run image's QR code. With All Alphas installed, iOS opens
      the app instead (apple-app-site-association); everyone else lands here. */
@@ -39,23 +36,24 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="nav" id="nav">
   <a href="/" class="nav-brand" aria-label="All Alphas home">
     <img src="/assets/logo.svg" alt="">
     <span class="nav-wordmark">ALL ALPHAS</span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a class="nav-link" href="/features/">Features</a>
     <a class="nav-link" href="/privacy/">Privacy</a>
     <a class="nav-link" href="/terms/">Terms</a>
     <a class="nav-link" href="/community/">Community</a>
     <a class="pill" href="https://testflight.apple.com/join/QeFHPPyd" target="_blank" rel="noopener" id="join-link">Join the beta</a>
   </div>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
 </nav>
 
-<main class="drill-main">
+<main id="main" class="drill-main">
   <article class="drill-card" id="drill" aria-live="polite">
     <p class="drill-label">Run this drill</p>
     <h1 class="drill-name" id="drill-name">Loading…</h1>
@@ -91,6 +89,6 @@
 
 <script src="/d/drills.js?v=1"></script>
 <script src="/d/drill.js?v=1"></script>
-<script src="/app.js?v=8"></script>
+<script src="/app.js?v=9"></script>
 </body>
 </html>

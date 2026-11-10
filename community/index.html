@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-/9OlX+zkD22YCrspq30CoqWCmmkGF4t2o6hszdd3/6A='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-/9OlX+zkD22YCrspq30CoqWCmmkGF4t2o6hszdd3/6A='; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#161618">
 <meta name="color-scheme" content="dark">
@@ -11,16 +11,14 @@
 <link rel="canonical" href="https://allalphas.com/community/">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=13">
+<link rel="stylesheet" href="/styles.css?v=14">
 <script>
   // Scroll animations are an enhancement: skip them for people who ask for reduced motion.
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js');
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
@@ -29,21 +27,21 @@
     <img src="/assets/logo.svg" alt="">
     <span class="nav-wordmark">ALL ALPHAS</span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a class="nav-link" href="/features/">Features</a>
     <a class="nav-link" href="/privacy/">Privacy</a>
     <a class="nav-link" href="/terms/">Terms</a>
     <a class="nav-link" href="/community/" aria-current="page">Community</a>
     <a class="pill" href="https://testflight.apple.com/join/QeFHPPyd" target="_blank" rel="noopener" id="join-link">Join the beta</a>
   </div>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
 </nav>
 
-<main class="page-main">
+<main id="main" class="page-main">
 <section class="section" id="community">
   <div class="section-label">
     <span class="eyebrow">COMMUNITY GUIDELINES</span>
-    <h2>TRAIN HARD.<br>BE DECENT.</h2>
+    <h1>TRAIN HARD.<br>BE DECENT.</h1>
     <span class="section-date">Effective October 14, 2026</span>
   </div>
   <div class="legal-list">
@@ -92,6 +90,6 @@
   </div>
 </footer>
 
-<script src="/app.js?v=8"></script>
+<script src="/app.js?v=9"></script>
 </body>
 </html>

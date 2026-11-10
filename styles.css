@@ -1,3 +1,14 @@
+/* Fonts are served from this site, so no visitor data goes to a font host. SIL Open Font License: assets/fonts/OFL.txt */
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 500; font-display: swap; src: url('/assets/fonts/BarlowCondensed_500Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/BarlowCondensed_600SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 700; font-display: swap; src: url('/assets/fonts/BarlowCondensed_700Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/Geist_400Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 500; font-display: swap; src: url('/assets/fonts/Geist_500Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/Geist_600SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 700; font-display: swap; src: url('/assets/fonts/Geist_700Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url('/assets/fonts/GeistMono_500Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/GeistMono_600SemiBold.ttf') format('truetype'); }
+
 /* All Alphas marketing site — tokens taken from src/theme/tokens.ts in ethanlight1110/all-alphas */
 
 :root {
@@ -454,6 +465,7 @@ a:focus-visible, button:focus-visible {
   padding-right: 0;
 }
 
+.feature h2,
 .feature h3 {
   margin: 0;
   font: 600 1.625rem/1 'Barlow Condensed', sans-serif;
@@ -485,6 +497,7 @@ a:focus-visible, button:focus-visible {
 
 .section-label .eyebrow { color: var(--mute); }
 
+.section-label h1,
 .section-label h2 {
   margin: 0;
   font: 600 4rem/.9 'Barlow Condensed', sans-serif;
@@ -1006,7 +1019,7 @@ footer .social-links {
   .feature { border-left: none !important; padding-left: 0 !important; }
   .feature:nth-child(n+2) { border-top: 1px solid var(--line); padding-top: 1.75rem; }
 
-  .section-label h2, .safety-panel h2 { font-size: 2.75rem; }
+  .section-label h1, .section-label h2, .safety-panel h2 { font-size: 2.75rem; }
   .rules-grid { grid-template-columns: minmax(0,1fr); }
   .safety-panel { margin-left: 1.25rem; margin-right: 1.25rem; padding: 2rem 1.5rem; }
 
@@ -1165,3 +1178,7 @@ footer .social-links {
 @media (max-width: 22.5em) {
   .feat-hero h1 { font-size: 2.75rem; }
 }
+
+/* Keyboard users can jump past the nav; it appears only when focused. */
+.skip-link { position: absolute; left: 16px; top: -60px; z-index: 100; padding: 10px 16px; border-radius: 8px; background: #fff; color: #111; font-weight: 600; }
+.skip-link:focus { top: 12px; }
