@@ -44,7 +44,7 @@ tools/csp.py    writes the Content-Security-Policy <meta> tag into every page (s
 - [x] Privacy Policy: cover the beta sign-up list (first name, optional last name, email) (2026-10-15)
 - [ ] After the beta, before App Store go-live: delete the `beta_signups` data (see all-alphas `docs/LAUNCH.md`)
 - [x] TestFlight public link live 2026-10-23: the hero "Join on TestFlight" button and the nav "Join the beta" pill link to https://testflight.apple.com/join/QeFHPPyd (the beta sign-up form was removed from the page; `join_beta()` and `beta_signups` still exist in Supabase)
-- [ ] Real App Store badge (Apple's official asset) and URL once the app is listed — replace the beta block in `index.html`
+- [x] App Store live 2026-11-11 (https://apps.apple.com/us/app/all-alphas/id6815810433): every TestFlight link now points there ("Get the app", "Download on the App Store"); official Apple badge artwork still to add
 - [x] Real app screenshots: `assets/screenshot-home.png` and `screenshot-analytics.png` (from `design/app-store/` in the app repo; retake there, resize to 640 px wide, bump `styles.css?v=`)
 - [ ] Legal review of the Privacy Policy, Terms and Safety Disclaimer copy
 - [ ] Confirm `support@allalphas.com` and `privacy@allalphas.com` mailboxes exist and are monitored
