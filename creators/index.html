@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-/9OlX+zkD22YCrspq30CoqWCmmkGF4t2o6hszdd3/6A='; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-/9OlX+zkD22YCrspq30CoqWCmmkGF4t2o6hszdd3/6A='; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://angejsoovsozmifusyok.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#161618">
 <meta name="color-scheme" content="dark">
@@ -11,7 +11,7 @@
 <link rel="canonical" href="https://allalphas.com/creators/">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/icon.png">
-<link rel="stylesheet" href="/styles.css?v=17">
+<link rel="stylesheet" href="/styles.css?v=18">
 <script>
   // Scroll animations are an enhancement: skip them for people who ask for reduced motion.
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js');
@@ -44,7 +44,7 @@
     <span class="eyebrow">CREATOR PROGRAM</span>
     <h1>SHOOT IT.<br>CLIP IT.<br>POST IT.</h1>
     <p>Post your training made with All Alphas. We'll give you All Alphas Pro free and a direct line for your suggestions.</p>
-    <a class="pill download-btn" href="mailto:support@allalphas.com?subject=Creator%20Program&amp;body=Name%3A%0AHandle(s)%20and%20platforms%3A%0AWhat%20you%20shoot%20(division%2C%20class)%3A%0AWhat%20you%20post%3A%0AFollowers%3A%0ALinks%20to%20a%20few%20recent%20videos%3A%0A">Apply now</a>
+    <a class="pill download-btn" href="#apply" data-apply>Apply now</a>
   </div>
   <div class="clip-mock">
     <img class="creator-shot" src="/assets/creator-share.jpg" width="800" height="1000" alt="A shooter's post made with All Alphas: a photo of a target at an outdoor range with the 50-Round Pistol COF drill card, its diagram and a QR code to get the drill, plus the run's results: hit factor 3.60, time 43.28, 156 points, 21 A, 22 C, 5 D, 2 misses, and the All Alphas name and @allalphas.app handle.">
@@ -103,7 +103,7 @@
     <div class="help-card">
       <span class="step-num">01</span>
       <span class="title">APPLY</span>
-      <span class="body">Email us your name, your handles, your follower count (500 or more) and a link to a few recent videos.</span>
+      <span class="body">Tap Apply now and send your email, Instagram username and follower count (500 or more).</span>
     </div>
     <div class="help-card">
       <span class="step-num">02</span>
@@ -127,13 +127,46 @@
   </div>
   <div class="email-card">
     <div>
-      <span class="label">APPLY BY EMAIL</span>
-      <a href="mailto:support@allalphas.com?subject=Creator%20Program&amp;body=Name%3A%0AHandle(s)%20and%20platforms%3A%0AWhat%20you%20shoot%20(division%2C%20class)%3A%0AWhat%20you%20post%3A%0AFollowers%3A%0ALinks%20to%20a%20few%20recent%20videos%3A%0A">support@allalphas.com</a>
+      <span class="label">EMAIL · INSTAGRAM · FOLLOWERS</span>
+      <span class="apply-lead">Takes a minute.</span>
     </div>
-    <span class="support-foot">Subject: Creator Program</span>
+    <a class="pill download-btn" href="#apply" data-apply>Apply now</a>
   </div>
 </section>
 </main>
+
+<dialog class="apply-dialog" id="apply-dialog" aria-labelledby="apply-title">
+  <form class="apply-form" id="apply-form" novalidate>
+    <div class="apply-head">
+      <h2 id="apply-title">APPLY</h2>
+      <button type="button" class="apply-close" id="apply-close" aria-label="Close">&#10005;</button>
+    </div>
+    <p class="apply-note">All Alphas Creator Program. All fields are required.</p>
+
+    <label class="apply-field">
+      <span>Email</span>
+      <input type="email" name="email" id="apply-email" autocomplete="email" inputmode="email" maxlength="254" required>
+    </label>
+    <label class="apply-field">
+      <span>Instagram username</span>
+      <span class="apply-at"><input type="text" name="instagram" id="apply-instagram" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="60" placeholder="yourname" required></span>
+    </label>
+    <label class="apply-field">
+      <span>Followers</span>
+      <input type="text" name="followers" id="apply-followers" inputmode="numeric" autocomplete="off" maxlength="13" placeholder="500 or more" required>
+    </label>
+    <label class="apply-trap" aria-hidden="true">Leave this empty <input type="text" name="website" id="apply-website" tabindex="-1" autocomplete="off"></label>
+
+    <p class="apply-status" id="apply-status" role="status" aria-live="polite"></p>
+    <button type="submit" class="pill download-btn apply-submit" id="apply-submit">Send application</button>
+    <p class="apply-fine">We use these only to review your application and email you about it. Questions: <a href="mailto:support@allalphas.com">support@allalphas.com</a></p>
+  </form>
+  <div class="apply-done" id="apply-done" hidden>
+    <h2>THANKS.</h2>
+    <p>We'll email you. Next step: post a run clip or image made with All Alphas and tag <strong>@allalphas.app</strong>. Once we see it, Pro is on us.</p>
+    <button type="button" class="pill download-btn" id="apply-done-close">Done</button>
+  </div>
+</dialog>
 
 <footer>
   <div class="brand">
@@ -157,5 +190,6 @@
 </footer>
 
 <script src="/app.js?v=9"></script>
+<script src="/creators/apply.js?v=1"></script>
 </body>
 </html>

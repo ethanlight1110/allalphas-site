@@ -1312,3 +1312,97 @@ footer .social-links {
   .creators-main .help-card,
   .creators-main .email-card { background: var(--card); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: inset 0 0 0 1px var(--mute); }
 }
+
+/* ---------- Creators: Apply pop-up ---------- */
+
+.apply-lead { display: block; margin-top: .375rem; font: 600 clamp(1.5rem, 4vw, 2.25rem)/1.1 'Barlow Condensed', sans-serif; }
+
+.apply-dialog {
+  width: min(28rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  color: var(--ink);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0) 40%),
+    #1f1f22;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .08),
+    0 0 0 1px rgba(255, 255, 255, .06),
+    0 40px 100px -20px rgba(0, 0, 0, .8);
+  overflow: auto;
+}
+
+.apply-dialog[open] { animation: apply-in 280ms cubic-bezier(.2, .9, .3, 1); }
+
+.apply-dialog::backdrop {
+  background: rgba(10, 10, 12, .6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+@keyframes apply-in {
+  from { opacity: 0; transform: translateY(12px) scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+
+.apply-form, .apply-done { display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; }
+.apply-form[hidden], .apply-done[hidden] { display: none; }
+.apply-head { display: flex; align-items: center; justify-content: space-between; }
+.apply-dialog h2 { margin: 0; font: 600 2.25rem/1 'Barlow Condensed', sans-serif; letter-spacing: -.01em; }
+.apply-note, .apply-done p { margin: 0; font: 400 .9375rem/1.5 'Geist', sans-serif; color: var(--mute); }
+.apply-done strong { color: var(--ink); font-weight: 600; }
+
+.apply-close {
+  width: 44px; height: 44px; margin: -8px -8px 0 0;
+  display: grid; place-items: center;
+  border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, .06);
+  color: var(--mute); font-size: 1rem; cursor: pointer;
+}
+.apply-close:hover { color: var(--ink); }
+.apply-close:active { transform: scale(.94); }
+
+.apply-field { display: flex; flex-direction: column; gap: .375rem; font: 500 .8125rem 'Geist', sans-serif; color: var(--mute); }
+
+.apply-field input {
+  width: 100%;
+  height: 3rem;
+  padding: 0 .875rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #161618;
+  color: var(--ink);
+  font: 400 1rem 'Geist', sans-serif; /* 16px keeps iOS Safari from zooming in */
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.apply-field input::placeholder { color: var(--faint); }
+.apply-field input:focus { outline: none; border-color: var(--good); box-shadow: 0 0 0 3px rgba(63, 193, 104, .2); }
+.apply-field input[aria-invalid="true"] { border-color: var(--bad); box-shadow: 0 0 0 3px rgba(255, 111, 107, .18); }
+
+/* The @ sits inside the Instagram field. */
+.apply-at { position: relative; display: block; }
+.apply-at::before { content: "@"; position: absolute; left: .875rem; top: 50%; transform: translateY(-50%); color: var(--faint); font: 400 1rem 'Geist', sans-serif; pointer-events: none; }
+.apply-at input { padding-left: 1.875rem; }
+
+.apply-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+.apply-status { margin: 0; min-height: 1.25rem; font: 500 .875rem/1.4 'Geist', sans-serif; color: var(--mute); }
+.apply-status:empty { min-height: 0; }
+.apply-status.bad { color: var(--bad); }
+
+.apply-submit { justify-content: center; border: 0; cursor: pointer; width: 100%; }
+.apply-submit:disabled { opacity: .6; cursor: default; }
+.apply-done .pill { justify-content: center; border: 0; cursor: pointer; align-self: stretch; }
+
+.apply-fine { margin: 0; font: 400 .75rem/1.5 'Geist', sans-serif; color: var(--faint); }
+.apply-fine a { color: var(--mute); text-decoration: underline; text-underline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .apply-dialog[open] { animation: apply-fade 160ms ease; }
+}
+@keyframes apply-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-transparency: reduce) {
+  .apply-dialog::backdrop { background: rgba(10, 10, 12, .85); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
