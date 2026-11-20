@@ -1192,48 +1192,13 @@ footer .social-links {
 
 .clip-mock { display: flex; justify-content: center; }
 
-/* A vertical run clip drawn in CSS: dark range-bay gradient, results panel in the top-left corner. */
-.clip-frame {
-  position: relative;
-  width: min(100%, 20rem);
-  aspect-ratio: 9 / 16;
-  border-radius: 28px;
-  overflow: hidden;
-  background:
-    radial-gradient(120% 60% at 70% 75%, rgba(196, 160, 110, .35), transparent 60%),
-    radial-gradient(80% 40% at 30% 20%, rgba(63, 193, 104, .18), transparent 70%),
-    linear-gradient(180deg, #2b2d31 0%, #1b1c1f 55%, #3a3328 100%);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, .45), inset 0 0 0 1px rgba(255, 255, 255, .06);
+.creator-shot {
+  display: block;
+  width: min(100%, 26rem);
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .06);
 }
-
-.clip-panel {
-  position: absolute;
-  left: 6%;
-  top: 5%;
-  width: 66%;
-  padding: .875rem;
-  border-radius: 14px;
-  background: rgba(22, 22, 24, .45);
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  text-align: left;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, .6);
-}
-
-.clip-drill { font: 600 .8125rem 'Geist', sans-serif; letter-spacing: .08em; }
-.clip-stats { display: flex; gap: 1rem; align-items: baseline; }
-.clip-big { font: 600 2rem/1 'Barlow Condensed', sans-serif; }
-.clip-unit { margin-left: .25rem; font: 500 .625rem 'Geist', sans-serif; letter-spacing: .1em; color: var(--mute); }
-.clip-pills { display: flex; flex-wrap: wrap; gap: .25rem; }
-.zone { padding: .125rem .4375rem; border-radius: 999px; font: 600 .625rem/1.4 'Geist', sans-serif; color: var(--inv-ink); text-shadow: none; }
-.zone.a { background: var(--good); }
-.zone.off { background: rgba(236, 236, 238, .15); color: var(--faint); }
-.zone.pb { background: var(--pb); }
-.clip-line { font: 500 .625rem 'Geist', sans-serif; letter-spacing: .06em; color: var(--mute); }
-.clip-brand { display: flex; align-items: center; gap: .375rem; padding-top: .5rem; border-top: 1px solid rgba(236, 236, 238, .18); font: 600 .625rem 'Geist', sans-serif; letter-spacing: .08em; }
-.clip-brand img { width: 14px; height: 14px; }
-.clip-handle { margin-left: auto; font-weight: 500; letter-spacing: 0; color: var(--mute); }
 
 .step-num { font: 500 .75rem 'Geist Mono', 'Geist', monospace; color: var(--good); letter-spacing: .1em; }
 .creator-rules { margin-top: 1.25rem; max-width: 46rem; line-height: 1.6; }
@@ -1241,7 +1206,6 @@ footer .social-links {
 
 @media (max-width: 56.25em) {
   .clip-mock { margin-top: 1.5rem; }
-  .feat-hero .sample-note { text-align: center; }
 }
 
 @media (max-width: 40em) {
