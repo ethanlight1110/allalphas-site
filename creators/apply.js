@@ -1,11 +1,10 @@
-// Creator Program pop-up form. Sends to Supabase apply_creator()
-// (supabase/migrations/0042_creator_applications.sql in ethanlight1110/all-alphas).
-// The publishable key can only call that function: the table itself is closed to it.
-// The checks here are for quick feedback; the server checks everything again.
+// Creator Program pop-up form. Posts to the Supabase Edge Function `creator-apply`
+// (supabase/functions/creator-apply in ethanlight1110/all-alphas), which emails the application
+// to support@allalphas.com through Resend. Nothing is stored in the database.
+// The checks here are for quick feedback; the function checks everything again.
 
 (function () {
-  var SUPABASE_URL = 'https://angejsoovsozmifusyok.supabase.co';
-  var SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_cPbH63FUT-T_7LQ0evo6zg_KDX5l-oz';
+  var ENDPOINT = 'https://angejsoovsozmifusyok.supabase.co/functions/v1/creator-apply';
 
   var dialog = document.getElementById('apply-dialog');
   var form = document.getElementById('apply-form');
@@ -85,26 +84,23 @@
       return;
     }
 
-    // Bots fill the hidden field: thank them and send nothing.
+    // Bots fill the hidden field: thank them and send nothing (the function checks it too).
     if (trap.value) { finish(); return; }
 
     sending = true;
     submit.disabled = true;
     say('Sending…');
 
-    fetch(SUPABASE_URL + '/rest/v1/rpc/apply_creator', {
+    fetch(ENDPOINT, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_PUBLISHABLE_KEY
-      },
-      body: JSON.stringify({ p_email: em, p_instagram: ig, p_followers: n })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: em, instagram: ig, followers: n, website: trap.value })
     }).then(function (res) {
       if (res.ok) { finish(); return; }
       return res.json().catch(function () { return {}; }).then(function (body) {
-        // Only messages written for people (raised in the function, code P0001) are shown.
+        // The function's own messages are written for people; anything else gets the generic one.
         var err = new Error('server');
-        if (body && body.code === 'P0001' && typeof body.message === 'string') err.human = body.message;
+        if (body && typeof body.error === 'string' && body.error.length < 200) err.human = body.error;
         throw err;
       });
     }).catch(function (err) {
