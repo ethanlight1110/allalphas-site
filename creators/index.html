@@ -11,7 +11,7 @@
 <link rel="canonical" href="https://allalphas.com/creators/">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/icon.png">
-<link rel="stylesheet" href="/styles.css?v=16">
+<link rel="stylesheet" href="/styles.css?v=17">
 <script>
   // Scroll animations are an enhancement: skip them for people who ask for reduced motion.
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js');
@@ -37,7 +37,8 @@
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
 </nav>
 
-<main id="main" class="page-main">
+<main id="main" class="page-main creators-main">
+<div class="creator-backdrop" aria-hidden="true"></div>
 <section class="feat-hero">
   <div class="feat-hero-copy">
     <span class="eyebrow">CREATOR PROGRAM</span>
@@ -51,8 +52,8 @@
 </section>
 
 <section class="feat-grid">
-  <article class="feat-card">
-    <div class="feat-head"><h2>WHO IT'S FOR</h2></div>
+  <article class="feat-card creator-who">
+    <div class="feat-head"><h2>WHO IT'S FOR</h2><span class="feat-tag">REQUIREMENTS</span></div>
     <ul>
       <li>Competitive shooters, coaches, instructors and range channels who post their training</li>
       <li>At least 500 followers on Instagram, TikTok, YouTube or another platform</li>

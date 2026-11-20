@@ -1211,3 +1211,104 @@ footer .social-links {
 @media (max-width: 40em) {
   .help-grid { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Creators: depth + the app's dot grid with a green wave (DotWave / GridBackdrop). */
+.creators-main { position: relative; isolation: isolate; }
+.creators-main > section { position: relative; z-index: 1; }
+
+.creator-backdrop {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: min(140vh, 75rem);
+  z-index: 0;
+  pointer-events: none;
+  /* fades out toward the content further down */
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%);
+  background:
+    radial-gradient(60rem 36rem at 12% 8%, rgba(63, 193, 104, .14), transparent 70%),
+    radial-gradient(circle at 12px 12px, rgba(236, 236, 238, .09) 1.1px, transparent 1.6px) 0 0 / 24px 24px;
+}
+
+/* The wave: the same dots in green, shown through one broad diagonal band that rolls top left to bottom right. */
+.creator-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 12px 12px, rgba(63, 193, 104, .55) 1.2px, transparent 1.8px) 0 0 / 24px 24px;
+  -webkit-mask-image: linear-gradient(135deg, transparent 38%, #000 50%, transparent 62%);
+  mask-image: linear-gradient(135deg, transparent 38%, #000 50%, transparent 62%);
+  -webkit-mask-size: 300% 300%;
+  mask-size: 300% 300%;
+  -webkit-mask-position: 100% 100%;
+  mask-position: 100% 100%;
+  opacity: .5;
+  animation: creator-wave 9s cubic-bezier(.45, 0, .25, 1) infinite;
+}
+
+@keyframes creator-wave {
+  0%   { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; }
+  55%  { -webkit-mask-position: 0 0; mask-position: 0 0; }
+  100% { -webkit-mask-position: 0 0; mask-position: 0 0; }
+}
+
+/* Cards are a material over the grid: translucent, blurred, light catching the top edge, a soft shadow below. */
+.creators-main .feat-card,
+.creators-main .help-card,
+.creators-main .email-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, 0) 42%),
+    rgba(31, 31, 34, .72);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .07),
+    inset 0 0 0 1px rgba(255, 255, 255, .03),
+    0 1px 2px rgba(0, 0, 0, .35),
+    0 22px 44px -24px rgba(0, 0, 0, .7);
+}
+
+/* Requirements first, with the app's faint green wash. */
+.creators-main .creator-who {
+  background:
+    linear-gradient(180deg, rgba(63, 193, 104, .10), rgba(63, 193, 104, .02) 60%),
+    rgba(31, 31, 34, .72);
+  box-shadow:
+    inset 0 1px 0 rgba(63, 193, 104, .28),
+    inset 0 0 0 1px rgba(63, 193, 104, .10),
+    0 1px 2px rgba(0, 0, 0, .35),
+    0 22px 44px -24px rgba(0, 0, 0, .7);
+}
+
+/* The share image sits highest: lit edge, deep shadow, a little green spill on the grid. */
+.creators-main .creator-shot {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .08),
+    0 2px 4px rgba(0, 0, 0, .3),
+    0 40px 90px -30px rgba(0, 0, 0, .8),
+    0 0 120px -40px rgba(63, 193, 104, .35);
+}
+
+.creators-main .step-num {
+  align-self: flex-start;
+  padding: .1875rem .5rem;
+  border-radius: 999px;
+  background: rgba(63, 193, 104, .12);
+}
+
+.creators-main .feat-hero h1 { letter-spacing: -.02em; }
+
+@media (prefers-reduced-motion: reduce) {
+  .creator-backdrop::after { animation: none; opacity: 0; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .creators-main .feat-card,
+  .creators-main .help-card,
+  .creators-main .email-card { background: var(--card); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .creator-backdrop { display: none; }
+  .creators-main .feat-card,
+  .creators-main .help-card,
+  .creators-main .email-card { background: var(--card); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: inset 0 0 0 1px var(--mute); }
+}
